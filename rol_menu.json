@@ -1,0 +1,79 @@
+[
+  {
+    "name"       : "id",
+    "dbType"     : "increments",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "id_rol",
+    "dbType"     : "integer:default,null:foreign,rols,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_menu",
+    "dbType"     : "integer:default,null:foreign,menus,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "note",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "status_system",
+    "dbType"     : "boolean:default,true",
+    "htmlType"   : "hidden",
+    "searchable" : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "status_user",
+    "dbType"     : "boolean:default,true",
+    "htmlType"   : "hidden",
+    "searchable" : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "modified_by",
+    "dbType"     : "integer",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "created_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "updated_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  }
+]

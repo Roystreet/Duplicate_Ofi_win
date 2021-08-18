@@ -1,0 +1,77 @@
+[
+  {
+    "name"       : "id",
+    "dbType"     : "increments",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "token",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "d_inicio",
+    "dbType"     : "date",
+    "htmlType"   : "date",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "h_inicio",
+    "dbType"     : "time:default,null:nullable",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "d_fin",
+    "dbType"     : "date",
+    "htmlType"   : "date",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "h_fin",
+    "dbType"     : "time:default,null:nullable",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_status_session",
+    "dbType"     : "integer:default,null:foreign,status_sessions,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "created_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "updated_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  }
+]

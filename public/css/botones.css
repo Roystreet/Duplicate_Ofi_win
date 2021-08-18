@@ -1,0 +1,87 @@
+.btn-list {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand";
+  font-size:12px;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 15px;
+}
+.btn-edit {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand";
+	font-size:12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 15px;
+  border: 1px solid #ddd !important;
+
+}
+
+.btn:hover {
+  background: #f4f4f4 !important;
+  color: #666 !important;
+  border: 1px solid #666 !important;
+}
+
+.btn-search {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand"
+  font-size:12px;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 15px !important;
+  border: 1px solid #616A63;
+}
+.btn-clean {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand";
+  font-size:12px;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 15px !important;
+  border: 1px solid #616A63;
+}
+.btn-clean1 {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand";
+	font-size:15px;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 12px;
+}
+.btn-registro {
+  text-decoration: none;
+  padding: 5px;
+  font-family: "Quicksand";
+	font-size:12px;
+  font-weight: 300;
+  color: #FFFFFF;
+  background-color: #00a65a;
+  border-radius: 15px !important;
+  border: 1px solid #616A63;
+}
+.btn-plus {
+  background-color: #00a65a;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.table-responsive {
+    overflow: hidden;
+}
+
+.fa-lock {
+  color: #FF0000 !important;
+}
+.fa-unlock  {
+  color: #00FF00 !important;
+}

@@ -1,0 +1,23 @@
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #1C5F14;
+  border: 1px solid #FFFFFF;
+  border-radius: 4px;
+  cursor: default;
+  float: left;
+  margin-right: 5px;
+  margin-top: 5px;
+  padding: 0 5px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #1C5F14;
+  color: white;
+}

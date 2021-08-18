@@ -1,0 +1,32 @@
+<div class="datatable table-responsive">
+  <table class="table table-bordered table-hover" id="usersApps-table"style="width:100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Acci&oacute;n</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>E-mail</th>
+        <th>Sexo</th>
+        <th>Tel&eacute;fono</th>
+        <th>Pa&iacute;s</th>
+        <th>Estatus</th>
+        <th>Acceso</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Acci&oacute;n</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>E-mail</th>
+        <th>Sexo</th>
+        <th>Tel&eacute;fono</th>
+        <th>Pa&iacute;s</th>
+        <th>Estatus</th>
+        <th>Acceso</th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -1,0 +1,78 @@
+[
+  {
+    "name"       : "id",
+    "dbType"     : "increments",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "id_users_sponsor",
+    "dbType"     : "integer:default,null:foreign,users_apps,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_users_invitado",
+    "dbType"     : "integer:default,null:foreign,users_apps,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "codigo_sponsor",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "usuario_sponsor",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_status_red",
+    "dbType"     : "integer:default,null:foreign,status_reds,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "status",
+    "dbType"     : "boolean:default,true",
+    "htmlType"   : "hidden",
+    "searchable" : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+    {
+    "name"       : "created_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "updated_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",                                                   
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  }
+]

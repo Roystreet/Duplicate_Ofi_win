@@ -1,0 +1,63 @@
+[
+  {
+    "name"       : "id",
+    "dbType"     : "increments",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "id_tp_token",
+    "dbType"     : "integer:default,null:foreign,tp_token,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "token_llave",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "token_code",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "status",
+    "dbType"     : "boolean",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "created_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "updated_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  }
+]

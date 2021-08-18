@@ -1,0 +1,711 @@
+html {
+    background: #ffffff;
+    color: #000000;
+    text-align: center;
+    font-family: "Roboto", Helvetica, sans-serif;
+  }
+  
+  /*body {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 100px;
+    overflow-x: hidden;
+  }*/
+  #centerContainer { 
+      width: 100%; 
+      text-align: left; 
+      margin: 0px auto; }
+  
+  .description {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(229, 229, 229, 0.7);
+  }
+  
+  div, img, footer {
+    position: relative;
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    font-weight: 300;
+  }
+  
+  h1 {
+    font-size: 36pt;
+    align:center;
+  }
+  
+  h2 {
+    font-size: 24pt;
+  }
+  
+  h3 {
+    font-size: 18pt;
+  }
+  
+  h4 {
+    font-size: 16pt;
+  }
+  
+  h5 {
+    font-size: 14pt;
+  }
+  
+  h6 {
+    font-size: 12pt;
+  }
+  
+  p {
+    font-size: 12pt;
+    margin-bottom: 12pt;
+  }
+  
+  strong {
+    font-weight: 900;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    color: #e5e5e5;
+  }
+  
+  a {
+    transition: color 0.25s ease-in-out;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #dff3fd;
+  }
+  a:visited {
+    color: #dff3fd;
+  }
+  li.active a, a:hover, a:active {
+    color: #e5e5e5;
+  }
+  
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .centered-y {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .distribution-map {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .distribution-map > img {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+  .distribution-map .map-point {
+    cursor: pointer;
+    outline: none;
+    z-index: 0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+    transform: translate(-50%, -50%);
+    -moz-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    -o-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out, z-index 0.25s ease-in-out;
+    -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
+    transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    background: rgba(26, 26, 26, 0.85);
+    border: 5px solid #7fcff7;
+  }
+  .distribution-map .menuBallFooter {
+    cursor: pointer;
+    outline: none;
+    z-index: 0;
+    position: absolute;
+  
+  }
+  .distribution-map .map-point .content {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    transform: translateX(-50%);
+    overflow: overlay;
+  }
+  .distribution-map .map-point:active, .distribution-map .map-point:focus {
+    margin: 0;
+    padding: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    width: 300px;
+    height: 220px;
+    color: #e5e5e5;
+    z-index: 1;
+    transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
+  }
+  .distribution-map .map-point:active .content, .distribution-map .map-point:focus .content {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -webkit-transition-delay: 0.25s, 0s, 0s;
+    transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    overflow: hidden;
+  }
+  .distribution-map .map-point:active .content a:hover, .distribution-map .map-point:active .content a:active, .distribution-map .map-point:focus .content a:hover, .distribution-map .map-point:focus .content a:active {
+    color: #000000;
+  }
+  
+  /* Botón instagram - facebook - twitter*/
+  
+  /*  .contenedorBotones {
+      position: absolute;
+      right: 25px;
+      top:0;
+  }  */
+  
+  *, *:before, *:after {
+      box-sizing: border-box;
+      outline: none;
+  }
+  
+  /* Centrar el logo boton */
+  
+   body {
+      position: relative;
+      /*display: flex;*/
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      text-align: center;
+      background: #ffffff;
+    } 
+  
+  /* redondel boton Insta*/
+  
+  .hover {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      background-color: PURPLE;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+  }
+  .youtu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(128, 0, 0);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+}
+
+  
+  /* redondel boton Face */
+  
+  .faceball {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      background-color: #2e487a;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+  }
+  
+  /* redondel boton Twitter */
+  
+  .twitball {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 90px;
+      background-color: #00aced;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      overflow: hidden;
+  }
+  
+  /* Parte superior de la I partida */
+  
+  .hover:before, .hover:after {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      transition: 0.25s linear;
+      z-index: 1;
+      background-image: linear-gradient(to top right, #F35834, #EC2B49, #DB0271, #AB0B9E, #6C1CCF, #383DED);
+  }
+  
+  /* Parte superior de la F partida */
+  
+  .faceball:before, .faceball:after {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      transition: 0.25s linear;
+      z-index: 1;
+      background-color: #2e487a;
+  }
+  
+  /* Parte superior de la T partida */
+  .twitball:before, .twitball:after {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      transition: 0.25s linear;
+      z-index: 1;
+      background-color: #00aced;
+  }
+  
+  /* Mitad izquierda del hover insta */
+  
+  .hover:before {
+      content: '';
+      left: 0;
+      justify-content: flex-end;
+      background-image: linear-gradient(to top right, #FBD67A, #F5923D, #F35834, #EC2B49, #DB0271);
+  }
+  
+  /* Mitad izquierda del hover face*/
+  
+  .faceball:before {
+      content: '';
+      left: 0;
+      justify-content: flex-end;
+      background-color: #2e487a;
+  }
+   /* Mitad izquierda del hover youtube*/
+  
+   .youtu:before {
+    content: '';
+    left: 0;
+    justify-content: flex-end;
+    background-color: #637a2e;
+}
+  
+  /* Mitad izquierda del hover twitter*/
+  
+  .twitball:before {
+      content: '';
+      left: 0;
+      justify-content: flex-end;
+      background-color: #00aced;
+  }
+  
+  /* Mitad derecha del hover insta*/
+  
+  .hover:after {
+      content: '';
+      bottom: 0;
+      justify-content: flex-start;
+  }
+  
+  /* Mitad derecha del hover  facebook*/
+  
+  .faceball:after {
+      content: '';
+      bottom: 0;
+      justify-content: flex-start;
+  }
+  /* Mitad derecha del hover  youtube*/
+  
+  .youtu:after {
+    content: '';
+    bottom: 0;
+    justify-content: flex-start;
+}
+  
+  /* Mitad derecha del hover  twitter*/
+  
+  .twitball:after {
+      content: '';
+      bottom: 0;
+      justify-content: flex-start;
+  }
+  
+  /* Fondo insta*/
+  
+  .hover:hover {
+      background-image: linear-gradient(to top right, #FBD67A, #F5923D, #F35834, #EC2B49, #DB0271, #AB0B9E, #6C1CCF, #383DED);
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  /* Fondo Youtube*/
+   .youtu:hover{
+    background-color: #fd3c25;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+   }  
+ 
+  /* Fondo face */
+  
+  .faceball:hover {
+      background-color: #2e487a;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  
+  /* Fondo twitter */
+  
+  .twitball:hover {
+      background-color: #00aced;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  
+  /* Para ocultar la letra I*/
+  
+  .hover:hover span {
+      opacity: 0;
+      z-index: -3;
+  }
+  
+  /* Para ocultar la letra F*/
+  
+  .faceball:hover span {
+      opacity: 0;
+      z-index: -3;
+  }
+  
+  /* Para ocultar la letra T*/
+  
+  .twitball:hover span {
+      opacity: 0;
+      z-index: -3;
+  }
+  
+  /* Para ocultar la mitad lado izquierdo insta */
+  
+  .hover:hover:before {
+      opacity: 0.5;
+      transform: translateY(-100%);
+  }
+  
+  /* Para ocultar la mitad lado izquierdo face*/
+  
+  .faceball:hover:before {
+      opacity: 0.5;
+      transform: translateY(-100%);
+  }
+  
+  /* Para ocultar la mitad lado izquierdo twitter*/
+  
+  .twitball:hover:before {
+      opacity: 0.5;
+      transform: translateY(-100%);
+  }
+  
+  /* Para ocultar la mitad lado derecho insta*/
+  
+  .hover:hover:after {
+      opacity: 0.5;
+      transform: translateY(100%);
+  }
+  
+  /* Para ocultar la mitad lado derecho face*/
+  
+  .faceball:hover:after {
+      opacity: 0.5;
+      transform: translateY(100%);
+  }
+  
+  /* Para ocultar la mitad lado derecho twitter*/
+  
+  .twitball:hover:after {
+      opacity: 0.5;
+      transform: translateY(100%);
+  }
+  
+  /* Letra y logo, no funciona con svg's insta*/
+  
+  .hover span {
+      position: absolute;
+      top: 3px;
+      left: -2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: whitesmoke;
+      font-family: 'Fira Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      opacity: 1;
+      transition: opacity 0.25s;
+      z-index: 2;
+      text-shadow: 3px 3px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  /* Letra y logo, no funciona con svg's face*/
+  .faceball span {
+      position: absolute;
+      top: 3px;
+      left: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: whitesmoke;
+      font-family: 'Fira Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      opacity: 1;
+      transition: opacity 0.25s;
+      z-index: 2;
+      text-shadow: 3px 3px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  /* Letra y logo, no funciona con svg's twitter*/
+  .twitball span {
+      position: absolute;
+      top: 2px;
+      left: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: whitesmoke;
+      font-family: 'Fira Mono', monospace;
+      font-size: 24px;
+      font-weight: 700;
+      opacity: 1;
+      transition: opacity 0.25s;
+      z-index: 2;
+      text-shadow: 3px 3px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  
+  /* Logo insta*/
+  
+  .hover .social-link {
+      position: relative;
+      left: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100%;
+      color: whitesmoke;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.25s;
+  }
+  
+  /* Logo face*/
+  
+  .faceball .social-link {
+      position: relative;
+      left: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100%;
+      color: whitesmoke;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.25s;
+  }
+  
+  /* Logo twitter*/
+  
+  .twitball .social-link {
+      position: relative;
+      left: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+      height: 100%;
+      color: whitesmoke;
+      font-size: 24px;
+      text-decoration: none;
+      transition: 0.25s;
+  }
+  
+  /* sombra Logo insta*/
+  
+  .hover .social-link i {
+      text-shadow: 1px 1px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  /* sombra Logo face*/
+  
+  .faceball .social-link i {
+      text-shadow: 1px 1px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  /* sombra Logo twitter*/
+  
+  .twitball .social-link i {
+      text-shadow: 1px 1px rgba(70, 98, 127, 0.7);
+      transform: scale(1);
+  }
+  
+  
+  /* Animacion del logo insta*/
+  
+  .hover .social-link:hover i {
+      animation: pulse 1s linear;
+  }
+  
+  /* Animacion del logo face*/
+  
+  .faceball .social-link:hover i {
+      animation: pulse 1s linear;
+  }
+  
+  /* Animacion del logo twitter*/
+  
+  .twitball .social-link:hover i {
+      animation: pulse 1s linear;
+  }
+  
+  @keyframes pulse {
+      40% {
+          transform: scale(1.3);
+      }
+      60% {
+          transform: scale(1.2);
+      }
+      80% {
+          transform: scale(1.1);
+      }
+      100% {
+          transform: scale(1);
+      }
+  }
+  
+  .menuBallFooter {
+      display: inline-block;
+      position: relative;
+      width: 50px;
+      height: 50px;
+      margin: 20px 10px;
+      
+  }
+  
+  .face {
+      width: 17px;
+      padding-bottom: 8px;
+  }
+  .twit {
+      width: 26px;
+  }
+  
+  .ins {
+      width: 60px;
+      padding-bottom: 5px;
+  }
+  .youtb{
+    width: 100%;
+  }
+  .fab, .far {
+      font-weight: 500;
+      padding-right: 5px;;
+  }
+  .fa-2x {
+      font-size: 1.5em !important;
+  }
+  
+  .fa-heart{
+      color: #EB565A;
+  }
+  #posicion-rela{
+      position: relative;
+      /*bottom: 250px;*/
+      display: flex;
+      padding-left: 30%;
+      padding-right: 30%;
+      padding-top: 0.5%;
+  }
+  /* Posicionamiento de los iconos en el mapa*/
+  .im-mapa {
+    top:45%;
+    left:16%;
+  }
+  .fm-mapa{
+    top:45%;
+    left:18%;
+  }
+  .ip-mapa{
+    top:65%;
+    left:23%;
+  }
+  .fp-mapa{
+    top:65%;
+    left:25%;
+  }
+  .yp-mapa{
+    top:65%;
+    left:21%; 
+  }
+  .ib-mapa{
+    top:66%;
+    left:28%;
+  }
+  .fb-mapa{
+    top:66%;
+    left:30%;
+  }
+  .ic-mapa{
+    top:54%;
+    left:24%;
+  }
+  .fc-mapa{
+    top:54%;
+    left:26%;
+  }
+  .fe-mapa{
+    top:59%;
+    left:23%;
+  }
+  

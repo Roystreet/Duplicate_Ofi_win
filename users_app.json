@@ -1,0 +1,112 @@
+[
+  {
+    "name"       : "id",
+    "dbType"     : "increments",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : true,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "id_tp_sexo",
+    "dbType"     : "integer:default,null:foreign,tp_sexos,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_country",
+    "dbType"     : "integer:default,null:foreign,countries,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_departament",
+    "dbType"     : "integer:default,null:foreign,departaments,id",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_city",
+    "dbType"     : "integer:default,null:foreign,cities,id",
+    "htmlType"   : "text",
+    "validations": "",
+    "searchable" : true
+  },
+  {
+    "name"       : "nombres",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "apellidos",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "f_nacimiento",
+    "dbType"     : "date",
+    "htmlType"   : "date",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "usuario",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "telefono",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "email",
+    "dbType"     : "text",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "id_status_users_app",
+    "dbType"     : "integer:default,null:foreign,status_users_apps,id",
+    "htmlType"   : "text",
+    "validations": "required",
+    "searchable" : true
+  },
+  {
+    "name"       : "created_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  },
+  {
+    "name"       : "updated_at",
+    "dbType"     : "timestamp",
+    "htmlType"   : "",
+    "validations": "",
+    "searchable" : false,
+    "fillable"   : false,
+    "primary"    : false,
+    "inForm"     : false,
+    "inIndex"    : false
+  }
+]
