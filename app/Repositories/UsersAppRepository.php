@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\UsersApp;
+use App\User;
 use App\Repositories\BaseRepository;
 
 /**
@@ -46,7 +46,7 @@ class UsersAppRepository extends BaseRepository
      **/
     public function model()
     {
-        return UsersApp::class;
+        return User::class;
     }
 
     public function with($relations) {

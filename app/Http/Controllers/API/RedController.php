@@ -10,14 +10,13 @@ use Validator, Redirect, Response, File;
 use App\Models\Views\vw_user_app_data;
 
 use App\Models\UsersPasswords;
-use App\Models\User;
 use App\Models\RolUsers;
 use App\Models\UsersRed;
 use App\Models\Country;
 use App\Models\Departament;
 use App\Models\City;
 use App\Models\Distrito;
-use App\Models\TokenUsersApp;
+use App\Models\UsersToken;
 
 use App\User;
 use Auth;

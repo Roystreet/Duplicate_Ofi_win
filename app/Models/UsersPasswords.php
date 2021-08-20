@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\UsersApp;
+use App\User;
 
 class UsersPasswords extends Model
 {
@@ -48,6 +48,6 @@ class UsersPasswords extends Model
 
     public function getUsers()
     {
-        return $this->belongsTo(UsersApp::class, 'id_users');
+        return $this->belongsTo(User::class, 'id_users');
     }
 }

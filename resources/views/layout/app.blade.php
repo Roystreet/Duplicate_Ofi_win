@@ -66,22 +66,13 @@
           <h6 class="dropdown-header d-flex align-items-center">
             <img class="dropdown-user-img" src="{{ asset('browers/img/usuario.png')  }}" />
             <div class="dropdown-user-details">
-              <div class="dropdown-user-details-name">{{ Auth::user()->name }}</div>
+              <div class="dropdown-user-details-name">{{ Auth::user()->first_name }}</div>
             </div>
           </h6>
 
           @php ($meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"))
           @php ($mes = $meses[Auth::user()->created_at->format('m') -1 ])
           <p class="dropdown-header">Miembro desde {{ $mes }} de {{ Auth::user()->created_at->format('Y') }}</p>
-
-          <div class="dropdown-divider"></div>
-
-          @if( Auth::user()->isexterno == true)
-          <a class="dropdown-item" href="{{ url('perfil') }}"><i class="fas fa-user mr-2 text-gray-400"></i>{{ __('Perfil') }}</a>
-          @else
-          <a class="dropdown-item" href="{{ url('redDetalles') }}"><i class="fas fa-users mr-2 text-gray-400"></i>{{ __('Red') }}</a>
-          <a class="dropdown-item" href="{{ url('perfil') }}"><i class="fas fa-user mr-2 text-gray-400"></i>{{ __('Perfil') }}</a>
-          @endif
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
             <i class="fas fa-sign-out-alt mr-2 text-gray-400"></i>

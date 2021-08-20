@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Models\UsersApp;
+use App\User;
 use Mail;
 
 class RegistrationStatus extends Command
@@ -45,7 +45,7 @@ class RegistrationStatus extends Command
         $fecha2antes  = date("Y-m-d h:i:s",strtotime($fecha_actual."- 2 days"));
         $fecha3antes  = date("Y-m-d h:i:s",strtotime($fecha_actual."- 3 days"));
 
-        $registros = UsersApp::where('created_at','<',$fecha2antes)->where('created_at','>',$fecha3antes)->where('id_status_users_app','=',1)->get();
+        $registros = User::where('created_at','<',$fecha2antes)->where('created_at','>',$fecha3antes)->where('id_status_users_app','=',1)->get();
 
         if($registros){
           foreach ($registros as $value)
@@ -64,7 +64,7 @@ class RegistrationStatus extends Command
 
         }
 
-        $registrosdes = UsersApp::where('created_at','<',$fecha3antes)->where('id_status_users_app','=',1)->get();
+        $registrosdes = User::where('created_at','<',$fecha3antes)->where('id_status_users_app','=',1)->get();
 
         if($registrosdes){
           foreach ($registrosdes as $value)
@@ -78,7 +78,7 @@ class RegistrationStatus extends Command
               $message->to($s)->subject('OFICINA VIRTUAL INHABILITADO');
             });
 
-            $registross = UsersApp::where('id',$value->id)->first();
+            $registross = User::where('id',$value->id)->first();
             $registross->id_status_users_app = 3;
             $registross->save();
 

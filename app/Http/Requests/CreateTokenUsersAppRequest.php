@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\TokenUsersApp;
+use App\Models\UsersToken;
 
 class CreateTokenUsersAppRequest extends FormRequest
 {
@@ -25,7 +25,7 @@ class CreateTokenUsersAppRequest extends FormRequest
      */
     public function rules()
     {
-        return TokenUsersApp::$rules;
+        return UsersToken::$rules;
     }
 
     public function attributes()

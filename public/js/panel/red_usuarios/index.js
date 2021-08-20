@@ -38,8 +38,8 @@ $(document).ready(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/red-usuarios/'+data+'"      class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>'+
-                '<a href="/red-usuarios/'+data+'/edit" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'+
+                '<a href="/red-usuarios/'+data+'"      class="btn btn-outline-blue btn-icon"><i class="fa fa-eye"></i></a>'+
+                '<a href="/red-usuarios/'+data+'/edit" class="btn btn-outline-blue btn-icon"><i class="fa fa-edit"></i></a>'+
                 '</div>';
               }},
               {data:"codigo_invitado",

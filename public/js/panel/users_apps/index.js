@@ -3,7 +3,30 @@ var table;
 
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-    $('#dataTable').DataTable();
+    $('#usersApps-table').DataTable({
+      'responsive'    : false,
+      'destroy'       : true,
+      'language': {
+         "decimal": "",
+         "emptyTable": "No hay registros para mostrar",
+         "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+         "infoEmpty": "Mostrando 0 to 0 of 0 registros",
+         "infoFiltered": "(Filtrado de _MAX_ total registros)",
+         "infoPostFix": "",
+         "thousands": ",",
+         "lengthMenu": "Mostrar _MENU_ registros",
+         "loadingRecords": "Cargando...",
+         "processing": "Procesando...",
+         "search": "Buscar:",
+         "zeroRecords": "Sin resultados encontrados",
+         "paginate": {
+             "first": "Primero",
+             "last": "Último",
+             "next": "Siguiente",
+             "previous": "Anterior"
+         }
+       },
+    });
 });
 
 $(document).ready(function() {
@@ -48,15 +71,15 @@ $("#search"  ).click(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/usuarios-app/'+data+'"      class="btn btn-outline-blue btn-icon"><i class="fas fa-eye"></i></a>'+
-                '<a href="/usuarios-app/'+data+'/edit" class="btn btn-outline-blue btn-icon"><i class="fas fa-edit"></i></a>'+
+                '<a href="/usuarios-app/'+data+'"      class="btn btn-outline-blue  btn-sm"><i class="fas fa-eye"></i></a>'+
+                '<a href="/usuarios-app/'+data+'/edit" class="btn btn-outline-blue  btn-sm"><i class="fas fa-edit"></i></a>'+
                 '</div>';
               }},
-              {data:"nombres",
+              {data:"first_name",
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
-              {data:"apellidos",
+              {data:"last_name",
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
@@ -68,7 +91,7 @@ $("#search"  ).click(function() {
               "render": function (data, type, row) {
                return (data) ? row.get_sexo.descripcion : '-';
               }},
-              {data:"telefono",
+              {data:"phone",
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
@@ -82,8 +105,8 @@ $("#search"  ).click(function() {
               }},
               {data:"id_status_users_app",
               "render": function (data, type, row) {
-                 return (data == 3)? '<a onclick="bloqueoAcceso('+row.id+', \'desbloquear\')" class="btn btn-outline-red btn-icon"><i class="fa fa-lock"></i><a>' :
-                 '<a onclick="bloqueoAcceso('+row.id+',\'bloquear\')" class="btn btn-outline-green btn-icon"><i class="fas fa-unlock"></i><a>';
+                 return (data == 3)? '<a onclick="bloqueoAcceso('+row.id+', \'desbloquear\')" class="btn btn-outline-red btn-sm"><i class="fa fa-lock"></i><a>' :
+                 '<a onclick="bloqueoAcceso('+row.id+',\'bloquear\')" class="btn btn-outline-green  btn-sm"><i class="fas fa-unlock"></i><a>';
               }},
 
             ],

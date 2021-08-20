@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\TokenUsersApp;
+use App\Models\UsersToken;
 use App\Repositories\BaseRepository;
 
 /**
@@ -38,7 +38,7 @@ class TokenUsersAppRepository extends BaseRepository
      **/
     public function model()
     {
-        return TokenUsersApp::class;
+        return UsersToken::class;
     }
 
     public function with($relations) {

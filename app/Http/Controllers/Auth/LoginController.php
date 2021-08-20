@@ -42,6 +42,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function index() {
+      return view('auth.login');
+    }
     public function login()
     {
         $credentials    = $this->validate(
@@ -59,7 +62,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
 
             $user = User::find(auth()->user()->id);
-            if ($user->isexterno == true) {
+            if ($user->isexterno != true) {
 
                 //BLOQUEADO
                 if ($user->id_status_users_app == 3) {
