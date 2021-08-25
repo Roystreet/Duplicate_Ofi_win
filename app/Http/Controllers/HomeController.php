@@ -33,14 +33,7 @@ class HomeController extends Controller
       $main = new MenuClass();
       $main = $main->getMenu();
 
-      if (auth()->user()->name == 'USUARIO EXTERNO'){
-        $rolUser = RolUsers::where('id_user', auth()->user()->id)->first();
-
-        return view('externo.home_app', compact('main', 'rolUser'));
-      }
-      else{
-        return view('home', compact('main'));
-      }
+      return view('home', compact('main'));
 
     }
 }
