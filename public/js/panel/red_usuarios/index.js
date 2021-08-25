@@ -38,8 +38,8 @@ $(document).ready(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/red-usuarios/'+data+'"      class="btn btn-outline-blue btn-icon"><i class="fa fa-eye"></i></a>'+
-                '<a href="/red-usuarios/'+data+'/edit" class="btn btn-outline-blue btn-icon"><i class="fa fa-edit"></i></a>'+
+                '<a href="/red-usuarios/'+data+'"      class="btn btn-outline-blue btn-sm"><i class="fa fa-eye"></i></a>'+
+                '<a href="/red-usuarios/'+data+'/edit" class="btn btn-outline-blue btn-sm"><i class="fa fa-edit"></i></a>'+
                 '</div>';
               }},
               {data:"codigo_invitado",
@@ -53,15 +53,15 @@ $(document).ready(function() {
               {data:"id_users_invitado",
               "render": function (data, type, row) {
                 return (data) ?
-                (row.get_users_invitado.nombres)?
-                row.get_users_invitado.nombres : '-'
+                (row.get_users_invitado.first_name)?
+                row.get_users_invitado.first_name : '-'
                 : '-';
               }},
               {data:"id_users_invitado",
               "render": function (data, type, row) {
                 return (data) ?
-                (row.get_users_invitado.apellidos)?
-                row.get_users_invitado.apellidos : '-'
+                (row.get_users_invitado.last_name)?
+                row.get_users_invitado.last_name : '-'
                 : '-';
               }},
 
@@ -95,8 +95,8 @@ $(document).ready(function() {
               }},
               {data:"status",
              "render": function (data, type, row) {
-                return (data == true)? '<a onclick="estatusUpload('+row.id+')"><i class="glyphicon glyphicon-ok-circle"></i><a>' :
-                '<a onclick="estatusUpload('+row.id+')"><i class="glyphicon glyphicon-ban-circle"></i><a>';
+                return (data == true)? '<a onclick="estatusUpload('+row.id+')" class="btn btn-outline-green btn-sm"><i class="fa fa-check-circle"></i><a>' :
+                '<a onclick="estatusUpload('+row.id+')" class="btn btn-outline-red  btn-sm"><i class="fa fa-close-circle"></i><a>';
             }},
           ],
         });

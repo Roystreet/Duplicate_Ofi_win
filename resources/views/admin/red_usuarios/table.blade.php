@@ -1,5 +1,5 @@
 <div class=" data-table table-responsive">
-    <table class="table table-bordered table-hover" style="width:100%" id="redUsuarios-table" cellspacing="0">
+    <table class="table table-sm table-bordered table-hover" style="width:100%" id="redUsuarios-table" cellspacing="0">
         <thead>
             <tr>
                 <th>Acci&oacute;n</th>

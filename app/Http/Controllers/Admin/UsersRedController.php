@@ -292,7 +292,7 @@ class UsersRedController extends AppBaseController
     {
       $id        = request()->id;
       $statusUpd = UsersRed::find($id);
-      $statusUpd ->status  = ($statusUpd ->status == 1)?  0 : 1;
+      $statusUpd ->status  = ($statusUpd->status == 1)?  0 : 1;
       $statusUpd ->update();
       return response()->json([
         'object' => 'success',

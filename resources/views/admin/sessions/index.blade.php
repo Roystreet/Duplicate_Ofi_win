@@ -2,47 +2,54 @@
 @section('title', 'Sesión')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('plugins/DataTable/Responsive-2.2.2/css/responsive.dataTables.min.css')}}">
-<link rel="stylesheet" href="{{ asset('plugins/DataTable/DataTables-1.10.18/css/jquery.dataTables.min.css')}}">
-<link rel="stylesheet" href="{{ asset('css/botones.css') }}">
-<style>
-  th, td { white-space: nowrap; }
-  div.dataTables_wrapper {
-    margin: 0 auto;
-  }
-  div.container {
-    width: 80%;
-  }
-  th { font-size: 12px; }
-  td { font-size: 11px; }
-  label { font-size: 12px; }
-</style>
+<!-- Datatables -->
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<!-- Alertify -->
+<link rel="stylesheet" href="{{ asset('alertify/css/alertify.min.css') }}">
 @endsection
 
 @section('content')
-<section class="content-header">
-  <h1 class="pull-left">Sesi&oacute;n</h1>
-  <h1 class="pull-right">
-    <a class="btn btn-registro btn-default" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('sesiones.create') !!}">Agregar</a>
-  </h1>
-</section>
-  <div class="content">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="clearfix"></div>
-    @include('flash::message')
-    <div class="clearfix"></div>
-    <div class="box box-success">
-      <div class="box-body">
-        @include('admin.sessions.table')
+@include('layout.page-header')
+
+<!-- Container-fluid -->
+<div class="container-fluid mt-n10">
+  <!-- Card -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <div class="col-md-10 float-right">
+        Sesi&oacute;n
+      </div>
+
+      <div class="col-md-2 float-right">
+        <a class="btn float-right btn-primary" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('sesiones.create') !!}">Agregar</a>
       </div>
     </div>
-    <div class="text-center">
+    @if (session('status')) <!-- Si el tipo de token se creó/actualizó correctamente, mostrará el mensaje del controlador -->
+        <div class="alert alert-success alert-icon mt-2 ml-2 mr-2" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <div class="alert-icon-aside">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="alert-icon-content">
+                <h6 class="alert-heading">{{ session('status') }}</h6>
+            </div>
+        </div>
+    @endif
+    <div class="card-body">
+      @include('admin.sessions.table')
     </div>
   </div>
+</div>
 @endsection
 
 @section('scripts')
-<script src="{{ asset('plugins/DataTable/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/DataTable/Responsive-2.2.2/js/dataTables.responsive.js') }}"></script>
+<!-- JS DataTable -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<!-- JS Alertify -->
+<script src="{{ asset('alertify/js/alertify.min.js') }}"></script>
+<!-- JS de la vista -->
 <script src="{{ asset('js/panel/sessions/index.js')}} "></script>
 @endsection

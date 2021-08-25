@@ -26,8 +26,10 @@
   <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
   <!-- Estilos -->
+
   <link rel="stylesheet" href="{{asset('/css/theme_admin.css')}}" />
   <link rel="stylesheet" href="{{asset('/css/style_ov_admin.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   @yield('css')
 
   <!-- CSRF Token -->

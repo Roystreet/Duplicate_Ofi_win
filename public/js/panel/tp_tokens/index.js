@@ -35,8 +35,8 @@ $(document).ready(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/token/'+data+'"      class="btn btn-outline-blue btn-icon"><i class="fas fa-eye"></i></a>'+
-                '<a href="/token/'+data+'/edit" class="btn btn-outline-blue btn-icon"><i class="fas fa-edit"></i></a>'+
+                '<a href="/token/'+data+'"      class="btn btn-outline-blue btn-sm"><i class="fas fa-eye"></i></a>'+
+                '<a href="/token/'+data+'/edit" class="btn btn-outline-blue btn-sm"><i class="fas fa-edit"></i></a>'+
                 '</div>';
 
               }},
@@ -46,8 +46,8 @@ $(document).ready(function() {
               }},
               {data:"status",
               "render": function (data, type, row) {
-                return (data == true)? '<a onclick="estatusUpload('+row.id+', \'desactivar\')" class="btn btn-outline-green btn-icon"><i class="fas fa-unlock"></i><a>' :
-                '<a onclick="estatusUpload('+row.id+', \'activar\')" class="btn btn-outline-red btn-icon"><i class="fa fa-lock"></i><a>';
+                return (data == true)? '<a onclick="estatusUpload('+row.id+', \'desactivar\')" class="btn btn-outline-green btn-sm"><i class="fas fa-unlock"></i><a>' :
+                '<a onclick="estatusUpload('+row.id+', \'activar\')" class="btn btn-outline-red btn-sm"><i class="fa fa-lock"></i><a>';
               }},
 
           ],

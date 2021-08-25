@@ -35,19 +35,19 @@ $(document).ready(function() {
 
 $("#reveal-password_old" ).on('click',function(e){
   var i = $(this).find('i');
-  i.attr('class', i.hasClass('glyphicon glyphicon-eye-open') ? ' glyphicon glyphicon-eye-close' : 'glyphicon glyphicon-eye-open');
-  $('#password_old').attr('type',i.hasClass('glyphicon glyphicon-eye-close') ? 'text' : 'password');
+  i.attr('class', i.hasClass('fa fa-eye-open') ? ' fa fa-eye-close' : 'fa fa-eye-open');
+  $('#password_old').attr('type',i.hasClass('fa fa-eye-close') ? 'text' : 'password');
 });
 
 $("#reveal-password" ).on('click',function(e){
   var i = $(this).find('i');
-  i.attr('class', i.hasClass('glyphicon glyphicon-eye-open') ? ' glyphicon glyphicon-eye-close' : 'glyphicon glyphicon-eye-open');
-  $('#password').attr('type',i.hasClass('glyphicon glyphicon-eye-close') ? 'text' : 'password');
+  i.attr('class', i.hasClass('fa fa-eye-open') ? ' fa fa-eye-close' : 'fa fa-eye-open');
+  $('#password').attr('type',i.hasClass('fa fa-eye-close') ? 'text' : 'password');
 });
 $("#reveal-password2").on('click',function(e){
   var i = $(this).find('i');
-  i.attr('class', i.hasClass('glyphicon glyphicon-eye-open') ? ' glyphicon glyphicon-eye-close' : 'glyphicon glyphicon-eye-open');
-  $('#password_confirm').attr('type',i.hasClass('glyphicon glyphicon-eye-close') ? 'text' : 'password');
+  i.attr('class', i.hasClass('fa fa-eye-open') ? ' fa fa-eye-close' : 'fa fa-eye-open');
+  $('#password_confirm').attr('type',i.hasClass('fa fa-eye-close') ? 'text' : 'password');
 });
 
 $.extend( $.validator.messages, {

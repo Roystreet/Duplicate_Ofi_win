@@ -35,8 +35,8 @@ $(document).ready(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/rol-usuarios/'+data+'"      class="btn btn-default btn-xs"><i class="glyphicon glyphicon-eye-open"></i></a>'+
-                '<a href="/rol-usuarios/'+data+'/edit" class="btn btn-default btn-xs"><i class="glyphicon glyphicon-edit"></i></a>'+
+                '<a href="/rol-usuarios/'+data+'"      class="btn btn-outline-blue btn-sm"><i class="fa fa-eye"></i></a>'+
+                '<a href="/rol-usuarios/'+data+'/edit" class="btn btn-outline-blue btn-sm"><i class="fa fa-edit"></i></a>'+
                 '</div>';
               }},
               {data:"id_user",
@@ -49,8 +49,8 @@ $(document).ready(function() {
               }},
               {data:"status",
              "render": function (data, type, row) {
-                return (data == true)? '<a onclick="estatusUpload('+row.id+')"><i class="glyphicon glyphicon-ok-circle"></i><a>' :
-                '<a onclick="estatusUpload('+row.id+')"><i class="glyphicon glyphicon-ban-circle"></i><a>';
+                return (data == true)? '<a onclick="estatusUpload('+row.id+')"><i class="fa fa-check-circle"></i><a>' :
+                '<a onclick="estatusUpload('+row.id+')"><i class="fa fa-ban-circle"></i><a>';
             }},
           ],
         });

@@ -1,6 +1,6 @@
 <div class="table-responsive">
-  <table class="stripe row-border order-column" style="width:100%" id="departaments-table">
-    <thead>
+  <table class="table table-sm table-bordered table-hover"  width="100%" cellspacing="0" id="departaments-table">
+  <thead>
       <tr>
         <th>Acci&oacute;n</th>
         <th>Pa&iacute;s</th>
@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-      
+
     </tbody>
     <tfoot>
       <th>Acci&oacute;n</th>
