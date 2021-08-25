@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="card card-text">
+    <div class="card-body">
       <form id=formIndexDepartamet>
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,8 +35,10 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="id_pay" class="control-label">Pa&iacute;s</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="fa fa-map-marker"></i></div>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-map-marker"></i></div>
+                  </div>
                   {!! Form::select('id_country', $country, null, ['id'=>'id_country', 'placeholder' => 'Seleccione...',  'class'=>'form-control select2', 'style'=>'width: 100%',  ] ) !!}
                 </div>
                 <div><span class="help-block" id="error"></span></div>
@@ -46,8 +48,10 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="id_pay" class="control-label">Departamento</label>
-                <div class="input-group">
-                  <div class="input-group-addon"><i class="fa fa-map-pin"></i></div>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-map-pin"></i></div>
+                  </div>
                   {!! Form::select('id_departament', $departament, null, ['id'=>'id_departament', 'placeholder' => 'Seleccione...',  'class'=>'form-control select2', 'style'=>'width: 100%',  ] ) !!}
                 </div>
                 <div><span class="help-block" id="error"></span></div>
@@ -58,8 +62,8 @@
         </div>
 
         <div class="box-footer">
-          <button type="button" class="btn btn-clean btn-default" id="clean">Limpiar</button>
-          <button type="button" class="btn btn-search pull-right btn-default btn-registro" id="search">Buscar</button>
+          <button type="button" class="btn float-left  btn-primary"  id="clean">Limpiar</button>
+          <button type="button" class="btn float-right btn-primary"  id="search">Buscar</button>
         </div>
 
       </form>
@@ -85,9 +89,12 @@
 </div>
 
 @endsection
-
 @section('scripts')
-<script src="{{ asset('plugins/DataTable/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('plugins/DataTable/Responsive-2.2.2/js/dataTables.responsive.js') }}"></script>
+<!-- JS DataTable -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+<!-- JS Alertify -->
+<script src="{{ asset('alertify/js/alertify.min.js') }}"></script>
+<!-- JS de la vista -->
 <script src="{{ asset('js/panel/departaments/index.js')}} "></script>
 @endsection

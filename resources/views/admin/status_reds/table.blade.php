@@ -1,5 +1,5 @@
 <div class="table-responsive">
-  <table class="stripe row-border order-column" style="width:100%" id="statusReds-table">
+  <table class="table table-sm table-bordered table-hover"  width="100%" cellspacing="0" id="statusReds-table">
     <thead>
       <tr>
         <th>Acci&oacute;n</th>

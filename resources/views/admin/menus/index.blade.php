@@ -2,75 +2,92 @@
 @section('title', 'Menú')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('plugins/DataTable/Responsive-2.2.2/css/responsive.dataTables.min.css')}}">
-<link rel="stylesheet" href="{{ asset('plugins/DataTable/DataTables-1.10.18/css/jquery.dataTables.min.css')}}">
-<link rel="stylesheet" href="{{ asset('css/inputs.css')}}">
-<link rel="stylesheet" href="{{ asset('css/botones.css') }}">
+<!-- Datatables -->
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+<!-- Alertify -->
+<link rel="stylesheet" href="{{ asset('alertify/css/alertify.min.css') }}">
 @endsection
 
 @section('content')
-<section class="content-header">
-  <h1 class="pull-left">Men&uacute;</h1>
-  <h1 class="pull-right">
-    <a class="btn btn-registro btn-default" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('menus.create') !!}">Agregar</a>
-  </h1>
-</section>
 
-  <div class="clearfix"></div>
-    @include('flash::message')
-    <div class="content">
+@include('layout.page-header')
 
-      <!-- Filtros para busqueda -->
-      <div class="box box-success">
-        <form id=formIndexMenus>
-          <meta name="csrf-token" content="{{ csrf_token() }}">
-          <div class="box-body">
+<!-- Container-fluid -->
+<div class="container-fluid mt-n10">
+  <!-- Card -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <div class="col-md-10 float-right">
+        Pa&iacute;s
+      </div>
 
-            <div class="row">
+      <div class="col-md-2 float-right">
+        <a class="btn float-right btn-primary" style="margin-top: -10px;margin-bottom: 5px"  href="{!! route('menus.create') !!}">Agregar</a>
+      </div>
+    </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="id_pay" class="control-label">Men&uacute;</label>
-                  <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-th-large"></i></div>
-                    {!! Form::text('menu', null, ['id'=> 'menu', 'class' => 'form-control']) !!}
+    <div class="card-body">
+      <form id=formIndexMenus>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <div class="box-body">
+
+          <div class="row">
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="id_pay" class="control-label">Men&uacute;</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-th-large"></i></div>
                   </div>
-                  <div><span class="help-block" id="error"></span></div>
+                  {!! Form::text('menu', null, ['id'=> 'menu', 'class' => 'form-control']) !!}
                 </div>
+                <div><span class="help-block" id="error"></span></div>
               </div>
+            </div>
 
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="id_pay" class="control-label">Secci&oacute;n</label>
-                  <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-qrcode"></i></div>
-                    {!! Form::text('section', null, ['id'=> 'section', 'class' => 'form-control']) !!}
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="id_pay" class="control-label">Secci&oacute;n</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-th-large"></i></div>
                   </div>
-                  <div><span class="help-block" id="error"></span></div>
+                  {!! Form::text('section', null, ['id'=> 'section', 'class' => 'form-control']) !!}
                 </div>
+                <div><span class="help-block" id="error"></span></div>
               </div>
-
             </div>
 
           </div>
 
-          <div class="box-footer">
-            <button type="button" class="btn btn-clean btn-default" id="clean">Limpiar</button>
-            <button type="button" class="btn btn-search pull-right btn-default btn-registro" id="search">Buscar</button>
-          </div>
-        </form>
-      </div>
-      <!-- Filtros para busqueda -->
-
-      <div class="clearfix"></div>
-      <div class="box box-success">
-        <div class="box-body">
-          @include('admin.menus.table')
         </div>
-      </div>
-      <div class="text-center">
-      </div>
+
+        <div class="box-footer">
+          <button type="button" class="btn float-left  btn-primary" id="clean">Limpiar</button>
+          <button type="button" class="btn float-right btn-primary" id="search">Buscar</button>
+        </div>
+      </form>
     </div>
+
+    @if (session('status')) <!-- Si el tipo de token se creó/actualizó correctamente, mostrará el mensaje del controlador -->
+        <div class="alert alert-success alert-icon mt-2 ml-2 mr-2" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <div class="alert-icon-aside">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="alert-icon-content">
+                <h6 class="alert-heading">{{ session('status') }}</h6>
+            </div>
+        </div>
+    @endif
+    <div class="card-body">
+      @include('admin.menus.table')
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')

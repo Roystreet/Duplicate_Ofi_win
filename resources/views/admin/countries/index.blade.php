@@ -9,9 +9,6 @@
 @endsection
 
 @section('content')
-
-
-
 @include('layout.page-header')
 
 <!-- Container-fluid -->

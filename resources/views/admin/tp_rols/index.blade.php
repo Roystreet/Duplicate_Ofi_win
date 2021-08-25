@@ -9,25 +9,40 @@
 @endsection
 
 @section('content')
-<section class="content-header">
-  <h1 class="pull-left">Rol</h1>
-  <h1 class="pull-right">
-    <a class="btn btn-registro btn-default" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('roles.create') !!}">Agregar</a>
-  </h1>
-</section>
-  <div class="content">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="clearfix"></div>
-    @include('flash::message')
-    <div class="clearfix"></div>
-    <div class="box box-success">
-      <div class="box-body">
-        @include('admin.tp_rols.table')
+
+@include('layout.page-header')
+
+<!-- Container-fluid -->
+<div class="container-fluid mt-n10">
+  <!-- Card -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <div class="col-md-10 float-right">
+        Rol
+      </div>
+
+      <div class="col-md-2 float-right">
+        <a class="btn float-right btn-primary" style="margin-top: -10px;margin-bottom: 5px"  href="{!! route('roles.create') !!}">Agregar</a>
       </div>
     </div>
-    <div class="text-center">
+    @if (session('status')) <!-- Si el tipo de token se creó/actualizó correctamente, mostrará el mensaje del controlador -->
+        <div class="alert alert-success alert-icon mt-2 ml-2 mr-2" role="alert">
+            <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <div class="alert-icon-aside">
+                <i class="fas fa-check"></i>
+            </div>
+            <div class="alert-icon-content">
+                <h6 class="alert-heading">{{ session('status') }}</h6>
+            </div>
+        </div>
+    @endif
+    <div class="card-body">
+      @include('admin.tp_rols.table')
     </div>
   </div>
+</div>
 @endsection
 
 @section('scripts')
