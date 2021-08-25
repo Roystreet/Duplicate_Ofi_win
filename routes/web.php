@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::group(['middleware' => 'auth', 'checkip'], function(){
 
-  Route::get('/home',              'App\HomeController@index')->name('home')->middleware('checkip');
+  Route::get('/home',              'HomeController@index')->name('home')->middleware('checkip');
 
 
     //PANEL RUTAS

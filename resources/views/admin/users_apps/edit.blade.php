@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Listado')
+@section('title', 'Usuarios')
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/inputs_sin_icon.css')}}">
