@@ -13,7 +13,7 @@
 {{ csrf_field() }}
 
 <!-- Cabecera del contenedor de la vista -->
-@include('app.page-header')
+@include('layout.page-header')
 
 <!-- Container-fluid -->
 <div class="container-fixed mt-n10 row justify-content-center" >
