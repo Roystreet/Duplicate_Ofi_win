@@ -64,7 +64,7 @@
         </div>
 
         <div class="box-footer">
-          <button type="button" class="btn float-left  btn-primary" id="clean">Limpiar</button>
+          <button type="button" class="btn float-left  btn-warning" id="clean">Limpiar</button>
           <button type="button" class="btn float-right btn-primary" id="search">Buscar</button>
         </div>
       </form>
