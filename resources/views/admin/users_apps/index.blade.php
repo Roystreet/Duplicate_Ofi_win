@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title', 'Listado de usuarios')
+@section('title', 'Usuarios')
 
 @section('css')
 <!-- Datatables -->
