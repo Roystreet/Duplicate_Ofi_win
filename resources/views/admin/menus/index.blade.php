@@ -18,7 +18,7 @@
   <div class="card mb-4">
     <div class="card-header">
       <div class="col-md-10 float-right">
-        Pa&iacute;s
+        Men&uacute;
       </div>
 
       <div class="col-md-2 float-right">

@@ -16,10 +16,12 @@
     @include('adminlte-templates::common.errors')
     <div class="box box-success">
       <div class="box-body">
-        <div class="row">
+        <div class="row align-items-center">
+          <div class="offset-lg-2 col-lg-6">
           {!! Form::open(['route' => 'menus.store' , 'id'=>'formCreateMenus']) !!}
-            @include('admin.menus.fields')
+            @include('admin.menus.fields') 
           {!! Form::close() !!}
+          </div>
         </div>
       </div>
     </div>

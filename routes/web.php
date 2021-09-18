@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth', 'checkip'], function(){
     Route::resource('accesos-ip',           'Admin\AccesosIpController');
     Route::resource('distritos',            'Admin\DistritoController');
     Route::resource('foto-perfil',          'Admin\PhotoPerfilController');
-
+    Route::resource('agentes',              'Admin\AgentsController');
 
     //RUTAS PARA USUARIO INTERNO
     Route::match(['get', 'post'], '/updateStatusDistritos',        'Admin\DistritoController@updateStatus');
@@ -94,6 +94,8 @@ Route::group(['middleware' => 'auth', 'checkip'], function(){
     Route::MATCH(['get', 'post'], '/getDepartament',               'Admin\DepartamentController@getDepartament')->name('departamet.get');
     Route::MATCH(['get', 'post'], '/getAccesosIp',                 'Admin\AccesosIpController@getAccesosIp')    ->name('accesosips.get');
     Route::MATCH(['get', 'post'], '/getDistritos',                 'Admin\DistritoController@getDistritos')     ->name('distritos.get');
+
+    Route::MATCH(['get', 'post'], '/getAgents',                    'Admin\AgentsController@getAgents')     ->name('agents.get');
 
     //RUTA PARA ESTATUS GENERALES
     Route::get  ('/estatus',        'Admin\StatusGeneralController@index')->name('estatus');
