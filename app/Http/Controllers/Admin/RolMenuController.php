@@ -95,8 +95,8 @@ class RolMenuController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $rols  = TpRol::WHERE('status',      '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
-        $menu  = Menu ::WHERE('status_user', '=', 'TRUE')->orderBy('menu',        'ASC')->pluck('menu',        'id');
+        $rols  = TpRol::WHERE('status',      '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+        $menu  = Menu ::WHERE('status_user', '=', true)->orderBy('menu',        'ASC')->pluck('menu',        'id');
 
         return view('admin.rol_menus.create')
         ->with('rols', $rols)
@@ -181,8 +181,8 @@ class RolMenuController extends AppBaseController
 
         $rolMenu = $this->rolMenuRepository->find($id);
 
-        $rols = TpRol::WHERE('status',      '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
-        $menu = Menu ::WHERE('status_user', '=', 'TRUE')->orderBy('menu',        'ASC')->pluck('menu',        'id');
+        $rols = TpRol::WHERE('status',      '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+        $menu = Menu ::WHERE('status_user', '=', true)->orderBy('menu',        'ASC')->pluck('menu',        'id');
 
         if (empty($rolMenu)) {
             Flash::error('Rol Menú no encontrado');

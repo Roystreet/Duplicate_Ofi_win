@@ -76,8 +76,8 @@ class DepartamentController extends AppBaseController
         return view('errors.403', compact('main'));
       }
 
-      $pais        = Country    ::WHERE('status', '=', 'TRUE')->orderBy('country',     'ASC')->pluck('country',     'id');
-      $departament = Departament::WHERE('status', '=', 'TRUE')->orderBy('departament', 'ASC')->pluck('departament', 'id');
+      $pais        = Country    ::WHERE('status', '=', true)->orderBy('country',     'ASC')->pluck('country',     'id');
+      $departament = Departament::WHERE('status', '=', true)->orderBy('departament', 'ASC')->pluck('departament', 'id');
 
       $departaments = $this->departamentRepository->all();
 
@@ -102,7 +102,7 @@ class DepartamentController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $pais    = Country::WHERE('status', '=', 'TRUE')->orderBy('country', 'ASC')->pluck('country', 'id');
+        $pais    = Country::WHERE('status', '=', true)->orderBy('country', 'ASC')->pluck('country', 'id');
 
         return view('admin.departaments.create')
         ->with('country', $pais)
@@ -183,7 +183,7 @@ class DepartamentController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        $pais        = Country::WHERE('status', '=', 'TRUE')->orderBy('country', 'ASC')->pluck('country', 'id');
+        $pais        = Country::WHERE('status', '=', true)->orderBy('country', 'ASC')->pluck('country', 'id');
         $departament = $this->departamentRepository->find($id);
 
         if (empty($departament)) {
@@ -263,13 +263,13 @@ class DepartamentController extends AppBaseController
             $html2 = '<option value="">'.trans('Seleccione un tipo de documento...').'</option>';
         } else {
             $html  = '<option selected="selected" value="">Seleccione un departamento...</option>';
-            $datos = Departament::where('status', '=', 'TRUE')->where('id_country', $id)->get();
+            $datos = Departament::where('status', '=', true)->where('id_country', $id)->get();
             foreach ($datos as $dato) {
                 $html .= '<option value="'.$dato->id.'">'.$dato->departament.'</option>';
             }
 
             $html2 = '<option selected="selected" value="">Seleccione un tipo de documento...</option>';
-            $datos2 = TpDocumentIdenties::where('status', '=', 'TRUE')->where('id_country', $id)->get();
+            $datos2 = TpDocumentIdenties::where('status', '=', true)->where('id_country', $id)->get();
             foreach ($datos2 as $dato2) {
                 $html2 .= '<option value="'.$dato2->id.'">'.$dato2->description.'</option>';
             }

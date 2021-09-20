@@ -24,7 +24,7 @@ class ValidacionAjaxController extends Controller
 
       if($querytelefono){
             return response()->json([
-              "object"  => 'true',
+              "object"  => true,
               "mensaje"  => "Este número de teléfono esta registrado",
             ]);
 
@@ -47,7 +47,7 @@ class ValidacionAjaxController extends Controller
 
       if($queryusuario){
             return response()->json([
-              "object"  => 'true',
+              "object"  => true,
               "mensaje" => "Este usuario ya esta registrado",
             ]);
 

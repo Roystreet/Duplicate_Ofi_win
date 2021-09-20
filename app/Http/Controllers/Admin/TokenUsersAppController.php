@@ -94,7 +94,7 @@ class TokenUsersAppController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $tpTokens = TpToken::where('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->get();
+        $tpTokens = TpToken::where('status', '=', true)->orderBy('descripcion', 'ASC')->get();
         return view('admin.token_users_apps.create', compact('tpTokens'))
         ->with('main',    $main);
     }
@@ -173,7 +173,7 @@ class TokenUsersAppController extends AppBaseController
 
         $tokenUsersApp = $this->tokenUsersAppRepository->find($id);
 
-        $tpTokens = TpToken::where('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->get();
+        $tpTokens = TpToken::where('status', '=', true)->orderBy('descripcion', 'ASC')->get();
 
         if (empty($tokenUsersApp)) {
             Flash::error('Token Usuarios no encontrada');

@@ -76,8 +76,8 @@ class UsersAppController extends AppBaseController
       ->orderBy('name',  'ASC')
       ->pluck( '(last_name||" " ||first_name)as name', 'users_apps.id as id');
 
-      $estatus_users = StatusUsersApp::WHERE('status', '=', 'TRUE')->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
-      $pais          = Country       ::WHERE('status', '=', 'TRUE')->orderBy('country',          'ASC')->pluck('country',          'id');
+      $estatus_users = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
+      $pais          = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
 
       $usersApps = $this->usersAppRepository->all();
 
@@ -106,12 +106,12 @@ class UsersAppController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        $pais           = Country       ::WHERE('status', '=', 'TRUE')->orderBy('country',          'ASC')->pluck('country',          'id');
-        $departamentos  = Departament   ::WHERE('status', '=', 'TRUE')->orderBy('departament',      'ASC')->pluck('departament',      'id');
-        $ciudad         = City          ::WHERE('status', '=', 'TRUE')->orderBy('city',             'ASC')->pluck('city',             'id');
-        $distrito       = Distrito      ::WHERE('status', '=', 'TRUE')->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
-        $sexo           = TpSexo        ::WHERE('status', '=', 'TRUE')->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
-        $estatus_users  = StatusUsersApp::WHERE('status', '=', 'TRUE')->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
+        $pais           = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
+        $departamentos  = Departament   ::WHERE('status', '=', true)->orderBy('departament',      'ASC')->pluck('departament',      'id');
+        $ciudad         = City          ::WHERE('status', '=', true)->orderBy('city',             'ASC')->pluck('city',             'id');
+        $distrito       = Distrito      ::WHERE('status', '=', true)->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
+        $sexo           = TpSexo        ::WHERE('status', '=', true)->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
+        $estatus_users  = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
 
         return view('admin.users_apps.create', compact('pais', 'departamentos', 'ciudad', 'distrito', 'sexo', 'estatus_users'))
         ->with('main',     $main)
@@ -210,12 +210,12 @@ class UsersAppController extends AppBaseController
         return view('errors.403', compact('main'));
       }
 
-      $pais           = Country       ::WHERE('status', '=', 'TRUE')->orderBy('country',          'ASC')->pluck('country',          'id');
-      $departamentos  = Departament   ::WHERE('status', '=', 'TRUE')->orderBy('departament',      'ASC')->pluck('departament',      'id');
-      $ciudad         = City          ::WHERE('status', '=', 'TRUE')->orderBy('city',             'ASC')->pluck('city',             'id');
-      $distrito       = Distrito      ::WHERE('status', '=', 'TRUE')->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
-      $sexo           = TpSexo        ::WHERE('status', '=', 'TRUE')->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
-      $estatus_users  = StatusUsersApp::WHERE('status', '=', 'TRUE')->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
+      $pais           = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
+      $departamentos  = Departament   ::WHERE('status', '=', true)->orderBy('departament',      'ASC')->pluck('departament',      'id');
+      $ciudad         = City          ::WHERE('status', '=', true)->orderBy('city',             'ASC')->pluck('city',             'id');
+      $distrito       = Distrito      ::WHERE('status', '=', true)->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
+      $sexo           = TpSexo        ::WHERE('status', '=', true)->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
+      $estatus_users  = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
 
         $usersApp = $this->usersAppRepository->find($id);
 

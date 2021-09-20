@@ -72,7 +72,7 @@ class MenuClass{
             $strMenu .= '<a class="nav-link" href="'.$url.
             '"><div class="nav-link-icon"><i class="fas '.$icon.'"></i></div>'.$name.'</a>';
           }
-           
+
          }
     }
     return $strMenu;
@@ -83,7 +83,7 @@ class MenuClass{
 
     return Menu::where('users.id', '=', $id_user)
     ->where('section',             '=', $id_seccion)
-    ->where('menus.status_user',   '=', 'TRUE')
+    ->where('menus.status_user',   '=', true)
     ->join('rol_menus',  'menus.id',             '=',   'rol_menus.id_menu')
     ->join('tp_rols',    'tp_rols.id',           '=',   'rol_menus.id_tp_rol')
     ->join('rol_users',  'rol_users.id_tp_rol',   '=',   'tp_rols.id')

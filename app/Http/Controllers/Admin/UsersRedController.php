@@ -98,7 +98,7 @@ class UsersRedController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $statusReds     = StatusRed   ::WHERE('status', '=', 'TRUE')->orderBy('descripcion', 'ASC'      )->pluck('descripcion',       'id');
+        $statusReds     = StatusRed   ::WHERE('status', '=', true)->orderBy('descripcion', 'ASC'      )->pluck('descripcion',       'id');
 
         $usersSponsor   = User::select(DB::raw("UPPER(CONCAT(apellidos,'  ', nombres)) AS name"), "users_apps.id as id")
          ->WHERE('id_status_users_app', '!=', '1')->orderBy('name',  'ASC')
@@ -197,7 +197,7 @@ class UsersRedController extends AppBaseController
          ->WHERE('id_status_users_app', '!=', '1')->orderBy('name',  'ASC')
          ->pluck( '(apellidos||" " ||nombres)as name', 'users_apps.id as id');
 
-        $statusReds    = StatusRed::WHERE('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+        $statusReds    = StatusRed::WHERE('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
         $redUsuarios = $this->redUsuariosRepository->find($id);
 

@@ -98,7 +98,7 @@ class CityController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $departament = Departament::WHERE('status', '=', 'TRUE')->orderBy('departament', 'ASC')->pluck('departament', 'id');
+        $departament = Departament::WHERE('status', '=', true)->orderBy('departament', 'ASC')->pluck('departament', 'id');
 
         return view('admin.cities.create')
         ->with('departament', $departament)
@@ -180,7 +180,7 @@ class CityController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        $departament = Departament::WHERE('status', '=', 'TRUE')->orderBy('departament', 'ASC')->pluck('departament', 'id');
+        $departament = Departament::WHERE('status', '=', true)->orderBy('departament', 'ASC')->pluck('departament', 'id');
         $city        = $this->cityRepository->find($id);
 
         if (empty($city)) {
@@ -259,7 +259,7 @@ class CityController extends AppBaseController
             $html  = '<option value="">'.trans('Seleccione una ciudad...').'</option>';
         } else {
             $html  = '<option selected="selected" value="">Seleccione una ciudad...</option>';
-            $datos = City::where('status', '=', 'TRUE')->where('id_departament', $id)->get();
+            $datos = City::where('status', '=', true)->where('id_departament', $id)->get();
             foreach ($datos as $dato) {
             $html .= '<option value="'.$dato->id.'">'.$dato->city.'</option>';
             }

@@ -32,8 +32,8 @@ class WidgetController extends AppBaseController
 {
   public function perfil()
   {
-    $sexo     = TpSexo::WHERE('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
-    $tp_document = TpDocumentIdenties::WHERE('status', '=', 'TRUE')->orderBy('description', 'ASC')->pluck('description', 'id');
+    $sexo     = TpSexo::WHERE('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+    $tp_document = TpDocumentIdenties::WHERE('status', '=', true)->orderBy('description', 'ASC')->pluck('description', 'id');
     $id       = User::where('email', auth()->user()->email)->first()->id;
     $allData  = (object) $this->getDataPerfil($id);
 
@@ -51,23 +51,23 @@ class WidgetController extends AppBaseController
 
       "id_country"     => ($usersApp->id_country)?     $usersApp->id_country              : null,
       "country"        => ($usersApp->id_country)?     $usersApp->getCountry->country     : '-',
-      "country_select" => Country::WHERE('status', '=', 'TRUE')->orderBy('country', 'ASC')->pluck('country', 'id'),
+      "country_select" => Country::WHERE('status', '=', true)->orderBy('country', 'ASC')->pluck('country', 'id'),
 
       "id_departament"     => ($usersApp->id_departament)? $usersApp->id_departament                  : '-',
       "departament"        => ($usersApp->id_departament)? $usersApp->getDepartament->departament     : '-',
-      "departament_select" => ($usersApp->id_country)? Departament::WHERE('status', '=', 'TRUE')->where('id_country',$usersApp->id_country)->orderBy('departament', 'ASC')->pluck('departament', 'id') : Departament::WHERE('status', '=', 'TRUE')->orderBy('departament', 'ASC')->pluck('departament', 'id') ,
+      "departament_select" => ($usersApp->id_country)? Departament::WHERE('status', '=', true)->where('id_country',$usersApp->id_country)->orderBy('departament', 'ASC')->pluck('departament', 'id') : Departament::WHERE('status', '=', true)->orderBy('departament', 'ASC')->pluck('departament', 'id') ,
 
       "id_city"     => ($usersApp->id_city)? $usersApp->id_city                  : '-',
       "city"        => ($usersApp->id_city)? $usersApp->getCity->city     : '-',
-      "city_select" => ($usersApp->id_departament)? City::WHERE('status', '=', 'TRUE')->where('id_departament',$usersApp->id_departament)->orderBy('city', 'ASC')->pluck('city', 'id') : City::orderBy('city', 'ASC')->pluck('city', 'id'),
+      "city_select" => ($usersApp->id_departament)? City::WHERE('status', '=', true)->where('id_departament',$usersApp->id_departament)->orderBy('city', 'ASC')->pluck('city', 'id') : City::orderBy('city', 'ASC')->pluck('city', 'id'),
 
       "id_distrito"     => ($usersApp->id_distrito)? $usersApp->id_distrito                  : '-',
       "distrito"        => ($usersApp->id_distrito)? $usersApp->getDistritos->distrito       : '-',
-      "distrito_select" => ($usersApp->id_city)? Distrito::WHERE('status', '=', 'TRUE')->where('id_city',$usersApp->id_city)->orderBy('distrito', 'ASC')->pluck('distrito', 'id') : Distrito::orderBy('distrito', 'ASC')->pluck('distrito', 'id'),
+      "distrito_select" => ($usersApp->id_city)? Distrito::WHERE('status', '=', true)->where('id_city',$usersApp->id_city)->orderBy('distrito', 'ASC')->pluck('distrito', 'id') : Distrito::orderBy('distrito', 'ASC')->pluck('distrito', 'id'),
 
       "id_tp_sexo"     => ($usersApp->id_tp_sexo)?     $usersApp->id_tp_sexo      : '-',
       "sexo"           => ($usersApp->id_tp_sexo)?     $usersApp->getSexo->descripcion     : '-',
-      "sexo_select"    => TpSexo::WHERE('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id'),
+      "sexo_select"    => TpSexo::WHERE('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id'),
 
       "nombres"        => ($usersApp->nombres)?        $usersApp->nombres     : null,
       "apellidos"      => ($usersApp->apellidos)?      $usersApp->apellidos   : null,
@@ -84,7 +84,7 @@ class WidgetController extends AppBaseController
       "id_tp_document"      => ($usersApp->id_tp_document)?     $usersApp->id_tp_document      : '-',
       "tp_document"         => ($usersApp->id_tp_document)?     $usersApp->getTypeDocumentIdenties->description     : '-',
       "nro_document"        => ($usersApp->nro_document)?     $usersApp->nro_document     : '-',
-      "tp_document_select"  => TpDocumentIdenties::WHERE('status', '=', 'TRUE')->orderBy('description', 'ASC')->pluck('description', 'id'),
+      "tp_document_select"  => TpDocumentIdenties::WHERE('status', '=', true)->orderBy('description', 'ASC')->pluck('description', 'id'),
 
     ];
 

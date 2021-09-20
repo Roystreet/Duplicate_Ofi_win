@@ -96,7 +96,7 @@ class SessionController extends AppBaseController
       $main = $main->getMenu();
       $session = null;
 
-      $statusSessions = StatusSession::WHERE('status', '=', 'TRUE')->orderBy('status_session', 'ASC')->pluck('status_session', 'id');
+      $statusSessions = StatusSession::WHERE('status', '=', true)->orderBy('status_session', 'ASC')->pluck('status_session', 'id');
 
         return view('admin.sessions.create')
         ->with('statusSessions', $statusSessions)
@@ -180,7 +180,7 @@ class SessionController extends AppBaseController
 
         $session = $this->sessionRepository->find($id);
 
-        $statusSessions = StatusSession::WHERE('status', '=', 'TRUE')->orderBy('status_session', 'ASC')->pluck('status_session', 'id');
+        $statusSessions = StatusSession::WHERE('status', '=', true)->orderBy('status_session', 'ASC')->pluck('status_session', 'id');
 
         if (empty($session)) {
             Flash::error('Sesión no encontrada');

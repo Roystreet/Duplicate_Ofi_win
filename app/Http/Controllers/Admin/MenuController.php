@@ -90,7 +90,7 @@ class MenuController extends AppBaseController
       $main = new MenuClass();
       $main = $main->getMenu();
 
-      $section = Menu::WHERE('status_user', '=', 'TRUE')->orderBy('menu', 'ASC')->pluck('menu', 'id');
+      $section = Menu::WHERE('status_user', '=', true)->orderBy('menu', 'ASC')->pluck('menu', 'id');
       $section->prepend("Menú Principal", '0');
 
       return view('admin.menus.create')
@@ -172,7 +172,7 @@ class MenuController extends AppBaseController
         return view('errors.403', compact('main'));
       }
 
-      $section = Menu::WHERE('status_user', '=', 'TRUE')->orderBy('menu', 'ASC')->pluck('menu', 'id');
+      $section = Menu::WHERE('status_user', '=', true)->orderBy('menu', 'ASC')->pluck('menu', 'id');
       $section->prepend("Menú Principal", '0');
 
       $menu    = $this->menuRepository->find($id);

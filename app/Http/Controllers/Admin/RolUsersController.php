@@ -97,7 +97,7 @@ class RolUsersController extends AppBaseController
       $main = $main->getMenu();
 
       $tpUsersAps = User ::orderBy('email', 'ASC')       ->pluck('email', 'id');
-      $tpRols     = TpRol::WHERE  ('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+      $tpRols     = TpRol::WHERE  ('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
         return view('admin.rol_users.create')
         ->with('tpUsersAps', $tpUsersAps)
@@ -184,7 +184,7 @@ class RolUsersController extends AppBaseController
       }
 
       $tpUsersAps = User ::orderBy('email', 'ASC')     ->pluck('email', 'id');
-      $tpRols     = TpRol::WHERE('status', '=', 'TRUE')->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
+      $tpRols     = TpRol::WHERE('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
       $rolUsers = $this->rolUsersRepository->find($id);
 

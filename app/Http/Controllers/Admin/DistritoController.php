@@ -65,7 +65,7 @@ class DistritoController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $city = City::WHERE('status', '=', 'TRUE')->orderBy('city', 'ASC')->pluck('city', 'id');
+        $city = City::WHERE('status', '=', true)->orderBy('city', 'ASC')->pluck('city', 'id');
 
         return view('admin.distritos.create')
         ->with('city',      $city)
@@ -134,7 +134,7 @@ class DistritoController extends AppBaseController
         $main = new MenuClass();
         $main = $main->getMenu();
 
-        $city = City::WHERE('status', '=', 'TRUE')->orderBy('city', 'ASC')->pluck('city', 'id');
+        $city = City::WHERE('status', '=', true)->orderBy('city', 'ASC')->pluck('city', 'id');
         $distrito = $this->distritoRepository->find($id);
 
         if (empty($distrito)) {
@@ -213,7 +213,7 @@ class DistritoController extends AppBaseController
             $html  = '<option value="">'.trans('Seleccione un distrito...').'</option>';
         } else {
             $html  = '<option selected="selected" value="">Seleccione un distrito...</option>';
-            $datos = Distrito::where('status', '=', 'TRUE')->where('id_city', $id)->get();
+            $datos = Distrito::where('status', '=', true)->where('id_city', $id)->get();
             foreach ($datos as $dato) {
             $html .= '<option value="'.$dato->id.'">'.$dato->distrito.'</option>';
             }
