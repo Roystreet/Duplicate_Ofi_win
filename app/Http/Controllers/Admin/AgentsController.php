@@ -6,6 +6,7 @@ use App\Http\Requests\CreateAgentsRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\UsersAppRepository;
+use Illuminate\Support\Facades\Validator;
 use App\Classes\MenuClass;
 use App\Models\RolUsers;
 use App\User;
@@ -16,6 +17,10 @@ use App\Models\Departament;
 use App\Models\City;
 use App\Models\Distrito;
 use App\Models\TpSexo;
+use App\Models\RolMenu;
+use Flash;
+use App\Models\UsersPasswords;
+use Illuminate\Support\Facades\Hash;
 
 class AgentsController extends Controller
 {
@@ -121,16 +126,18 @@ class AgentsController extends Controller
       ->with('usersApp', $usersApp);
   }
 
-  public function store(CreateAgentsRequest $request)
+  public function store(Request $request)
   {
       $input = $request->all();
-      $input{'first_name'  } = mb_strtoupper($input{'first_name'  });
+      $input{'first_name'} = mb_strtoupper($input{'first_name'  });
       $input{'last_name'} = mb_strtoupper($input{'last_name'});
       $input{'email'    } = mb_strtolower($input{'email'    });
 
       $validator = Validator::make($input, [
-        'email'     => 'required|unique:users_apps',
-        'telefono'  => 'required|unique:users_apps'
+        'email'     => 'required|unique:users',
+        'phone'     => 'required|unique:users',
+        'password'         => 'required|min:6',
+        'password_confirm' => 'required|same:password|min:6'
       ]);
 
       if ($validator->fails()) {
@@ -139,11 +146,35 @@ class AgentsController extends Controller
                       ->withInput();
       }
 
-      $usersApp = $this->usersAppRepository->create($input);
+      $dataUser = [
+          'id_tp_sexo' =>  $input{'id_tp_sexo'},
+          'id_country' =>  $input{'id_country'},
+          'id_departament' =>  $input{'id_departament'},
+          'id_city' =>  $input{'id_city'},
+          'id_distrito' =>  $input{'id_distrito'},
+          'nombres' => $input{'first_name'},
+          'apellidos' => $input{'last_name'},
+          'f_nacimiento' => $input{'birth'},
+          'usuario' => $input{'usuario'},
+          'telefono' => $input{'phone'},
+          'isexterno'            => false,
+          'id_status_users_app'  => 2,
+          'email'                => mb_strtolower($input{'email'}),
+          'password'             => Hash::make($input{'password'}),
+        ];
+        $id_user = User::create($dataUser)->id;
 
-      Flash::success('Agente guardado con éxito su id es '.$usersApp->id);
+        $dataPasswordUserApp = [
+          'id_users'         => $id_user,
+          'password'         => Hash::make($input{'password'}),
+          'password_repeat'  => Hash::make($input{'password'}),
+          'status'           => true,
+        ];
+        UsersPasswords::create($dataPasswordUserApp)->id;
 
-      return $usersApp.' '.$validator;
+      Flash::success('Agente guardado con éxito');
+
+      return redirect(route('agentes.index'));
   }
 
 }

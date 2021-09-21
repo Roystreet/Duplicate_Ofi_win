@@ -10,10 +10,29 @@
 </div>
 </div>
 
+<div class="form-row">
+  <div class="col-xs-12 col-sm-12">
+  <label for="middle_name">Contraseña:</label><code>*</code>
+  <div class="input-group mb-2">
+    {!! Form::password('password', ['class' => 'form-control', 'id'=> 'password']) !!}
+  </div>
+  {!! $errors->first('password', '<span class="help-block"><strong>:message</strong></span>' ) !!}
+</div>
+</div>
 
 <div class="form-row">
   <div class="col-xs-12 col-sm-12">
-  {!! Form::label('first_name', 'Primer Nombre:') !!}<code>*</code>
+  <label for="middle_name">Repetir Contraseña:</label><code>*</code>
+  <div class="input-group mb-2">
+    {!! Form::password('password_confirm', ['id'=> 'password_confirm', 'class' => 'form-control']) !!}
+  </div>
+  {!! $errors->first('password_confirm', '<span class="help-block"><strong>:message</strong></span>' ) !!}
+</div>
+</div>
+
+<div class="form-row">
+  <div class="col-xs-12 col-sm-12">
+  {!! Form::label('first_name', 'Nombre:') !!}<code>*</code>
   <div class="input-group mb-2">
     {!! Form::text('first_name', null, ['id'=> 'first_name', 'class' => 'form-control']) !!}
   </div>
@@ -24,16 +43,6 @@
 
 <div class="form-row">
   <div class="col-xs-12 col-sm-12">
-  <label for="middle_name">Segundo Nombre:</label>
-  <div class="input-group mb-2">
-    {!! Form::text('middle_name', null, ['id'=> 'middle_name', 'class' => 'form-control']) !!}
-  </div>
-  <div><span class="help-block" id="error"></span></div>
-</div>
-</div>
-
-<div class="form-row">
-  <div class="col-xs-12 col-sm-12">
   <label for="last_name">Apellidos:</label><code>*</code>
   <div class="input-group mb-2">
     {!! Form::text('last_name', null, ['id'=> 'last_name', 'class' => 'form-control']) !!}
@@ -41,8 +50,6 @@
   <div><span class="help-block" id="error"></span></div>
 </div>
 </div>
-
-
 
 <div class="form-row">
   <div class="col-xs-12 col-sm-12">

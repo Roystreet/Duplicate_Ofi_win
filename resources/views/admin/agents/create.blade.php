@@ -27,6 +27,7 @@
     </div>
   </div>
   <div class="container-fluid mt-n10">
+    @include('adminlte-templates::common.errors')
     <div class="offset-lg-2 col-lg-6">
     <h6 class="small text-muted font-weight-500 card-header">
       Agentes
