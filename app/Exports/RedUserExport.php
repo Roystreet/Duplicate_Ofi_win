@@ -41,8 +41,8 @@ class RedUserExport implements FromCollection, WithHeadings
             'email',
             'telefono',
             'id sponsor',
-            'id_users_invitado',
-            'usuario_invitado',
+            'id_users',
+            'username',
             'nivel',
         ];
     }

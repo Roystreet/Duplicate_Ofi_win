@@ -18,9 +18,8 @@ class UsersRedRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'id_users_sponsor',
-        'id_users_invitado',
-        'codigo_invitado',
-        'usuario_invitado',
+        'id_users',
+        'username',
         'id_status_red',
         'status'
     ];

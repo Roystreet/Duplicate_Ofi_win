@@ -38,6 +38,18 @@ $(document).ready(function() {
 
 $("#search"  ).click(function() {
     var formulario = $("#formIndexUserApps").serializeObject();
+    console.log(formulario);
+
+    if(
+        $("#name").val() =='' &&
+        $("#email").val() =='' &&
+        $("#telefono").val() =='' &&
+        $("#id_country").val() =='' &&
+        $("#id_status_users_app").val() ==''
+      ) {
+        alert("Debes seleccionar al menos un filtro");
+        return false;
+    }
 
     table = $('#usersApps-table').removeAttr('width').DataTable({
             'ajax': {

@@ -6,7 +6,7 @@ $(document).ready(function() {
     ignore: [],
     rules: {
       id_users_sponsor      :    { required: true                            },
-      id_users_invitado     :    { required: true                            },
+      id_users     :    { required: true                            },
       codigo_invitado       :    { required: true                            },
       usuario_invitado      :    { required: true, letras : true             },
       id_status_red         :    { required: true                            }

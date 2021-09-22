@@ -45,7 +45,7 @@ class vw_users_list extends Model
     'status_red',
     'created_at',
     'updated_at',
-    'id_users_invitado'
+    'id_users'
   ];
 
 

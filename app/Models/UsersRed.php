@@ -17,9 +17,8 @@ class UsersRed extends Model
 
   public $fillable = [
     'id_users_sponsor',
-    'id_users_invitado',
-    'codigo_invitado',
-    'usuario_invitado',
+    'id_users',
+    'username',
     'id_status_red',
     'status'
   ];
@@ -30,13 +29,12 @@ class UsersRed extends Model
    * @var array
    */
   protected $casts = [
-    'id'               => 'integer',
-    'id_users_sponsor' => 'integer',
-    'id_users_invitado' => 'integer',
-    'codigo_invitado'  => 'string',
-    'usuario_invitado' => 'string',
-    'id_status_red'    => 'integer',
-    'status'           => 'boolean'
+    'id'                => 'integer',
+    'id_users_sponsor'  => 'integer',
+    'id_users' => 'integer',
+    'username'          => 'string',
+    'id_status_red'     => 'integer',
+    'status'            => 'boolean'
   ];
 
   /**
@@ -58,11 +56,11 @@ class UsersRed extends Model
 
   public function getUsersSponsorCodigo()
   {
-    return $this->hasOne(UsersRed::class, 'id_users_invitado', 'id_users_sponsor');
+    return $this->hasOne(UsersRed::class, 'id_users', 'id_users_sponsor');
   }
 
   public function getUsersInvitado()
   {
-    return $this->belongsTo(Users::class, 'id_users_invitado');
+    return $this->belongsTo(Users::class, 'id_users');
   }
 }

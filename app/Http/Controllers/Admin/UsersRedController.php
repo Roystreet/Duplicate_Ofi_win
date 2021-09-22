@@ -79,11 +79,8 @@ class UsersRedController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        $redUsuarios = $this->redUsuariosRepository->all();
-
         return view('admin.red_usuarios.index')
-            ->with('redUsuarios', $redUsuarios)
-            ->with('main',        $main);
+          ->with('main',        $main);
     }
 
     /**
@@ -127,7 +124,7 @@ class UsersRedController extends AppBaseController
      public function store(CreateUsersRedRequest $request)
     {
         $input = $request->all();
-        $input{'usuario_invitado'} = mb_strtoupper($input{'usuario_invitado'});
+        $input{'username'} = mb_strtoupper($input{'username'});
 
         $redUsuarios = $this->redUsuariosRepository->create($input);
 
@@ -235,7 +232,7 @@ class UsersRedController extends AppBaseController
             return redirect(route('red-usuarios.index'));
         }
         $input = $request->all();
-        $input{'usuario_invitado'} = mb_strtoupper($input{'usuario_invitado'});
+        $input{'username'} = mb_strtoupper($input{'username'});
 
         $redUsuarios = $this->redUsuariosRepository->update($input, $id);
 

@@ -181,7 +181,7 @@ function reloadTable(data) {
      }},
       {data:"id",
       "render": function (data, type, row) {
-       return '<a id="getData" data-id="'+row.id_users_invitado+'"><i class="fa fa-eye"><i></a>';
+       return '<a id="getData" data-id="'+row.id_users+'"><i class="fa fa-eye"><i></a>';
      }},
       {data:"get_status_red",
       "render": function (data, type, row) {
@@ -295,7 +295,7 @@ $("#searchlevel").click(function() {
 //OBTENER DATOS DEL USUARIO DESDE DATATABLE
 $('#redDetalles-table tbody' ).on('click','#getData', function () {
   var id              = $(this).attr('data-id');
-  var campodeBusqueda = 'id_users_invitado';
+  var campodeBusqueda = 'id_users';
   $.ajax({
       url  : "/busquedaUsuarioCompleta",
       type :"POST",

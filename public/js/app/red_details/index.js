@@ -239,7 +239,7 @@ $('#usuarios tbody' ).on('click','#getData', function () {
   var id              = $(this).attr('data-id');
   var sponsor_id      = $(this).attr('data-sponsor_id');
 
-  var campodeBusqueda = 'id_users_invitado';
+  var campodeBusqueda = 'id_users';
   $.ajax({
       url  : "/busquedaUsuarioSimple",
       type :"POST",

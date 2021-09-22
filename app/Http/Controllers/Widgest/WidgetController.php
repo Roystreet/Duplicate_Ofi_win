@@ -110,7 +110,7 @@ class WidgetController extends AppBaseController
     }
 
 
-    $redUser         = UsersRed::where('id_users_invitado', $id)->with('getStatusRed', 'getUsersSponsor')->first();
+    $redUser         = UsersRed::where('id_users', $id)->with('getStatusRed', 'getUsersSponsor')->first();
     $redUserMeActv   = UsersRed::where('id_users_sponsor',  $id)->where('id_status_red',1)->count();
     $redUserMeInactv = UsersRed::where('id_users_sponsor',  $id)->where('id_status_red',2)->count();
     $redUserTotal    = UsersRed::count();
@@ -122,9 +122,8 @@ class WidgetController extends AppBaseController
       "sponsor_apellidos"  => ($redUser->id_users_sponsor)?     $redUser->getUsersSponsor->apellidos    : '-',
       "sponsor_contacto"   => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsor->telefono)? $redUser->getUsersSponsor->telefono : 'N/R'    : '-',
 
-      "id_users_invitado"  => ($redUser->id_users_invitado)?    $redUser->id_users_invitado             : '-',
-      "codigo_invitado"    => ($redUser->codigo_invitado)?      $redUser->codigo_invitado               : '-',
-      "usuario_invitado"   => ($redUser->usuario_invitado)?     $redUser->usuario_invitado              : null,
+      "id_users"  => ($redUser->id_users)?    $redUser->id_users             : '-',
+      "username"   => ($redUser->username)?     $redUser->username              : null,
 
       "created_at"         => ($redUser->created_at)?           $redUser->created_at->format('d-m-Y')   : '-',
       "updated_at"         => ($redUser->updated_at)?           $redUser->updated_at->format('d-m-Y')   : '-',

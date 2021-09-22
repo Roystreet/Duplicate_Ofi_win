@@ -24,7 +24,7 @@
         "inView": true
     },
     {
-        "name": "id_users_invitado",
+        "name": "id_users",
         "dbType": "integer:default,null:foreign,users_apps,id",
         "htmlType": "text",
         "validations": "",
@@ -48,7 +48,7 @@
         "inView": true
     },
     {
-        "name": "usuario_invitado",
+        "name": "username",
         "dbType": "text",
         "htmlType": "text",
         "validations": "",

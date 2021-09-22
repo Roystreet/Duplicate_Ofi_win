@@ -228,23 +228,13 @@ class UserController
           UsersPasswords::create($dataPasswordUserApp)->id;
 
           // @Tercer Registro: Registro en red del usuario
-          $codigo_rand   = rand(100000,999999);
-          $codigo_final;
-          do {
-            $user_red = UsersRed::where('codigo_invitado',$codigo_rand)->first();
-            if(!$user_red){
-              $codigo_final = $codigo_rand;
-            }
-          } while ($codigo_final == null);
-
           $usernameCreate = mb_strtolower(substr($input->first_name, 0, 2).substr($input->last_name, 0, 2)).rand(100000,999999);
           $username       = (property_exists ($input, 'username')? mb_strtolower($input->username) : $usernameCreate);
 
           $red_usuario_data = [
             'id_users_sponsor'    => $sponsor_data->userid,
-            'id_users_invitado'   => $id_user,
-            'codigo_invitado'     => $codigo_final,
-            'usuario_invitado'    => $username,
+            'id_users'   => $id_user,
+            'username'    => $username,
             'id_status_red'       => 1
           ];
           UsersRed::create($red_usuario_data);
@@ -332,8 +322,8 @@ class UserController
         $input = (object) $request->all();
         // @EVALUACION
         /*Valido User Name **/
-        $validatorName = Validator::make(array('usuario_invitado' => $input->username), [
-            'usuario_invitado'   =>  'required|max:15|min:4|unique:users_red,usuario_invitado,NULL,id',
+        $validatorName = Validator::make(array('username' => $input->username), [
+            'username'   =>  'required|max:15|min:4|unique:users_red,username,NULL,id',
         ]);
         if ($validatorName->fails()) {
 
@@ -461,8 +451,8 @@ class UserController
         $input = (object) $request->all();
         // @EVALUACION
         /*Valido User Name **/
-        $validatorName = Validator::make(array('usuario_invitado' => $input->username), [
-            'usuario_invitado'   =>  'required|max:15|min:4|unique:users_red,usuario_invitado,NULL,id',
+        $validatorName = Validator::make(array('username' => $input->username), [
+            'username'   =>  'required|max:15|min:4|unique:users_red,username,NULL,id',
         ]);
         if ($validatorName->fails()) {
             return Response::json(array(
@@ -707,10 +697,10 @@ class UserController
                 // @Tercero Registro: Registro de datos en tabla red usuarios
                 if(property_exists ($input, 'new_username')){
                     $red_usuario_data = [
-                      'id_users_invitado'   => $userData->userid,
-                      'usuario_invitado'    => mb_strtolower($input->new_username),
+                      'id_users'   => $userData->userid,
+                      'username'    => mb_strtolower($input->new_username),
                     ];
-                    $redUsuarios = UsersRed::where('id_users_invitado', $userData->userid)->first();
+                    $redUsuarios = UsersRed::where('id_users', $userData->userid)->first();
                     $redUsuarios->update($red_usuario_data);
                 }
 
@@ -730,13 +720,13 @@ class UserController
 
         }//Fin de else
 
-        $redUsuarios = UsersRed::where('id_users_invitado', $userData->userid)->first();
+        $redUsuarios = UsersRed::where('id_users', $userData->userid)->first();
 
         return Response::json(array(
             'status' => 200,
             'data'   => [
                 'posts'=> [
-                    'username' => mb_strtolower($redUsuarios->usuario_invitado),
+                    'username' => mb_strtolower($redUsuarios->username),
                     'userid'   => $userData->userid,
                 ]
             ]
@@ -1158,7 +1148,7 @@ class UserController
     **/
     public function validSponsorName ($sponsor_username)
     {
-        $sponsor_data     = UsersRed::where('usuario_invitado', $sponsor_username)->first();
+        $sponsor_data     = UsersRed::where('username', $sponsor_username)->first();
         if(!$sponsor_data){
             $response['Code']    = 5404;
             $response['Error']   = '(5404) Invalid sponsor, '.$sponsor_username;
@@ -1171,11 +1161,11 @@ class UserController
 
     public function validUsername    ($username)
     {
-        $validatorName = Validator::make(array('usuario_invitado' => $username), [
-          'usuario_invitado'   =>  'required|max:15|min:4|unique:users_red,usuario_invitado,NULL,id',
+        $validatorName = Validator::make(array('username' => $username), [
+          'username'   =>  'required|max:15|min:4|unique:users_red,username,NULL,id',
         ],
         [
-          'usuario_invitado.unique' => 'duplicate entry if field is required to be unique'
+          'username.unique' => 'duplicate entry if field is required to be unique'
         ]);
         if ($validatorName->fails()) {
 

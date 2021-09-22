@@ -41,9 +41,9 @@ class ValidacionAjaxController extends Controller
     public function usuarioValidExists()
     {
       $id_red_users_app  = request()->id_red_users_app;
-      $usuario_invitado  = request()->usuario_invitado;
+      $username  = request()->username;
 
-      $queryusuario    = UsersRed ::WHERE ('usuario_invitado', $usuario_invitado)->WHERE('id','!=', $id_red_users_app)->first();
+      $queryusuario    = UsersRed ::WHERE ('username', $username)->WHERE('id','!=', $id_red_users_app)->first();
 
       if($queryusuario){
             return response()->json([

@@ -35,8 +35,8 @@ class pagosExport implements FromArray,WithHeadings
             'email',
             'telefono',
             'id sponsor',
-            'id_users_invitado',
-            'usuario_invitado',
+            'id_users',
+            'username',
             'nivel',
             'puntos_ganados',
         ];

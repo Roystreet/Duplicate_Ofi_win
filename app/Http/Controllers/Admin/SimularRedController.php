@@ -57,8 +57,7 @@ class SimularRedController extends AppBaseController
 
 
     $filtros= [
-      'codigo_invitado'   => 'Código',
-      'usuario_invitado'  => 'Usuario',
+      'username'  => 'Usuario',
     ];
 
     return view('admin.simular_red.index')
@@ -84,7 +83,7 @@ class SimularRedController extends AppBaseController
         'mensaje'  => $mensaje,
       ]);
     }else{
-      $busquedaFinal = $this->getDataPerfil($existe->id_users_invitado);
+      $busquedaFinal = $this->getDataPerfil($existe->id_users);
       return response()->json([
         'data'     => $busquedaFinal,
         'flag'     => true,
@@ -122,8 +121,7 @@ public function simulandoRed($id)
     $dataUser{'tp_rol'}    = $rolUser->getTpRol->descripcion;
   }
   $filtros= [
-    'codigo_invitado'   => 'Código',
-    'usuario_invitado'  => 'Usuario',
+    'username'  => 'Usuario',
   ];
 
   return view('externo.red_detalles.show')
@@ -190,7 +188,7 @@ public function simulandoRed($id)
     }
 
 
-    $redUser         = UsersRed::where('id_users_invitado', $id)->with('getStatusRed', 'getUsersSponsor', 'getUsersSponsorCodigo')->first();
+    $redUser         = UsersRed::where('id_users', $id)->with('getStatusRed', 'getUsersSponsor', 'getUsersSponsorCodigo')->first();
     $redUserMeActv   = UsersRed::where('id_users_sponsor',  $id)->where('id_status_red',1)->count();
     $redUserMeInactv = UsersRed::where('id_users_sponsor',  $id)->where('id_status_red',2)->count();
     $redUserTotal    = UsersRed::count();
@@ -201,9 +199,7 @@ public function simulandoRed($id)
       "sponsor_nombres"    => ($redUser->id_users_sponsor)?     $redUser->getUsersSponsor->nombres      : '-',
       "sponsor_apellidos"  => ($redUser->id_users_sponsor)?     $redUser->getUsersSponsor->apellidos    : '-',
       "sponsor_email"      => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsor->email)? $redUser->getUsersSponsor->email : 'N/R'    : '-',
-      "sponsor_usuario"   => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsorCodigo->usuario_invitado)? $redUser->getUsersSponsorCodigo->usuario_invitado : '-'    : '-',
-      "sponsor_codigo"    => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsorCodigo->codigo_invitado)? $redUser->getUsersSponsorCodigo->codigo_invitado : '-'    : '-',
-
+      "sponsor_usuario"   => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsorCodigo->username)? $redUser->getUsersSponsorCodigo->username : '-'    : '-',
       "redUserMe"          => ($redUserMeActv + $redUserMeInactv),
       "redUserMeActv"      => $redUserMeActv,
       "redUserMeInactv"    => $redUserMeInactv,

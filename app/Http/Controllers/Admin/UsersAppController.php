@@ -71,19 +71,10 @@ class UsersAppController extends AppBaseController
         return view('errors.403', compact('main'));
       }
 
-      $tpUsersApps   = User::select(DB::raw("UPPER(CONCAT(last_name,'  ', first_name)) AS name"), "users.id as id")
-      ->where('isexterno',  true)
-      ->orderBy('name',  'ASC')
-      ->pluck( '(last_name||" " ||first_name)as name', 'users_apps.id as id');
-
       $estatus_users = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
       $pais          = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
 
-      $usersApps = $this->usersAppRepository->all();
-
         return view('admin.users_apps.index')
-        // ->with('usersApps',  $usersApps)
-        ->with('tpUsersApps',   $tpUsersApps)
         ->with('estatus_users', $estatus_users)
         ->with('pais',          $pais)
         ->with('main',          $main);
@@ -317,7 +308,12 @@ class UsersAppController extends AppBaseController
                            'getStatusUsersApp'
                                       );
 
-       if($formulario{'id_users_app'       }) { $data = $data->where('id',                  $formulario{'id_users_app'       });}
+       if($formulario{'name'               }) {
+         $data = $data->orWhere('first_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
+         $data = $data->orWhere('last_name', 'like', '%' .mb_strtoupper($formulario{'name'} ). '%');
+         $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
+
+       }
        if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
        if($formulario{'telefono'           }) { $data = $data->where('phone',               $formulario{'telefono'           });}
        if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}

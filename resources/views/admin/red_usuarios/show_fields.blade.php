@@ -13,20 +13,14 @@
 
 <!-- Id Users Invitado Field -->
 <div class="form-group"><div class="form-group col-sm-6">
-  {!! Form::label('id_users_invitado', 'Usuario Invitado:') !!}
-  <p>{{ ($redUsuarios->id_users_invitado)? $redUsuarios->getUsersInvitado->nombres.' '.$redUsuarios->getUsersInvitado->apellidos : '-'  }}</p>
-</div>
-
-<!-- Codigo Sponsor Field -->
-<div class="form-group"><div class="form-group col-sm-6">
-  {!! Form::label('codigo_invitado', 'Codigo Invitado:') !!}
-  <p>{{ $redUsuarios->codigo_invitado }}</p>
+  {!! Form::label('id_users', 'Usuario Invitado:') !!}
+  <p>{{ ($redUsuarios->id_users)? $redUsuarios->getUsersInvitado->nombres.' '.$redUsuarios->getUsersInvitado->apellidos : '-'  }}</p>
 </div>
 
 <!-- Usuario Sponsor Field -->
 <div class="form-group"><div class="form-group col-sm-6">
-  {!! Form::label('usuario_invitado', 'Usuario:') !!}
-  <p>{{ $redUsuarios->usuario_invitado }}</p>
+  {!! Form::label('username', 'Usuario:') !!}
+  <p>{{ $redUsuarios->username }}</p>
 </div>
 
 <!-- Id Status Red Field -->

@@ -50,14 +50,14 @@ $(document).ready(function() {
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
-              {data:"id_users_invitado",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.first_name)?
                 row.get_users_invitado.first_name : '-'
                 : '-';
               }},
-              {data:"id_users_invitado",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.last_name)?
@@ -65,7 +65,7 @@ $(document).ready(function() {
                 : '-';
               }},
 
-              {data:"id_users_invitado",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.email)?
