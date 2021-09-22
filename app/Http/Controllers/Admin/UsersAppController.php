@@ -136,7 +136,7 @@ class UsersAppController extends AppBaseController
 
         $usersApp = $this->usersAppRepository->create($input);
 
-        Flash::success('Usuario guardado con éxito.');
+        // Flash::success('Usuario guardado con éxito.');
 
         return redirect(route('usuarios-app.index'));
     }
@@ -161,8 +161,7 @@ class UsersAppController extends AppBaseController
         $usersApp = $this->usersAppRepository->find($id);
 
         if (empty($usersApp)) {
-            Flash::error('Usuario no encontrado');
-
+            // Flash::error('Usuario no encontrado');
             return redirect(route('usuarios-app.index'));
         }
 
@@ -211,8 +210,7 @@ class UsersAppController extends AppBaseController
         $usersApp = $this->usersAppRepository->find($id);
 
         if (empty($usersApp)) {
-            Flash::error('Usuario no encontrado');
-
+            // Flash::error('Usuario no encontrado');
             return redirect(route('usuarios-app.index'));
         }
 
@@ -241,7 +239,7 @@ class UsersAppController extends AppBaseController
         $usersApp = $this->usersAppRepository->find($id);
 
         if (empty($usersApp)) {
-            Flash::error('Usuario no encontrado');
+            // Flash::error('Usuario no encontrado');
 
             return redirect(route('usuarios-app.index'));
         }
@@ -283,14 +281,14 @@ class UsersAppController extends AppBaseController
         $usersApp = $this->usersAppRepository->find($id);
 
         if (empty($usersApp)) {
-            Flash::error('Usuario no encontrado');
+            // Flash::error('Usuario no encontrado');
 
             return redirect(route('usuarios-app.index'));
         }
 
         $this->usersAppRepository->delete($id);
 
-        Flash::success('Usuario eliminado correctamente.');
+        // Flash::success('Usuario eliminado correctamente.');
 
         return redirect(route('usuarios-app.index'));
     }
