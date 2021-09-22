@@ -42,7 +42,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="fa fa-user"></i></div>
                     </div>
-                    {!! Form::select('id_users_app', $tpUsersApps, null, ['id'=>'id_users_app', 'placeholder' => 'Seleccione un usuario...',  'class'=>'form-control select2', 'style'=>'width: 100%',  ] ) !!}
+                    {!! Form::text('name', null, ['id'=> 'name', 'class' => 'form-control']) !!}
                   </div>
                   <div><span class="help-block" id="error"></span></div>
                 </div>

@@ -60,18 +60,10 @@ class AgentsController extends Controller
       return view('errors.403', compact('main'));
     }
 
-    $tpUsersApps   = User::select(DB::raw("UPPER(CONCAT(last_name,'  ', first_name)) AS name"), "users.id as id")
-    ->where('isexterno',  false)
-    ->orderBy('name',  'ASC')
-    ->pluck( '(last_name||" " ||first_name)as name', 'users_apps.id as id');
-
     $pais          = Country       ::WHERE('status', '=', 'TRUE')->orderBy('country',          'ASC')->pluck('country',          'id');
 
-    $usersApps = $this->usersAppRepository->all();
 
     return view('admin.agents.index')
-      // ->with('usersApps',  $usersApps)
-      ->with('tpUsersApps',   $tpUsersApps)
       ->with('pais',          $pais)
       ->with('main',          $main);
 
@@ -90,9 +82,14 @@ class AgentsController extends Controller
                          'getStatusUsersApp'
                                     );
 
-     if($formulario{'id_users_app'       }) { $data = $data->where('id',                  $formulario{'id_users_app'       });}
+      if($formulario{'name'               }) {
+        $data = $data->orWhere('first_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
+        $data = $data->orWhere('last_name', 'like', '%' .mb_strtoupper($formulario{'name'} ). '%');
+        $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
+
+      }
      if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
-     if($formulario{'phone'           }) { $data = $data->where('phone',               $formulario{'phone'           });}
+     if($formulario{'phone'              }) { $data = $data->where('phone',               $formulario{'phone'           });}
      if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}
 
      $data = $data->where('isexterno',  false);
