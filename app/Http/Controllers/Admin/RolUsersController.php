@@ -93,7 +93,7 @@ class RolUsersController extends AppBaseController
       $main = new MenuClass();
       $main = $main->getMenu();
 
-      $tpUsersAps = User ::orderBy('email', 'ASC')       ->pluck('email', 'id');
+      $tpUsersAps = User ::WHERE  ('isexterno', '=', false)->orderBy('email', 'ASC')->pluck('email', 'id');
       $tpRols     = TpRol::WHERE  ('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
         return view('admin.rol_users.create')
