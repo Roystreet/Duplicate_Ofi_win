@@ -125,7 +125,7 @@ class UsersAppController extends AppBaseController
 
         $validator = Validator::make($input, [
           'email'     => 'required|unique:users',
-          'telefono'  => 'required|unique:users'
+          'phone'  => 'required|unique:users'
         ]);
 
         if ($validator->fails()) {
@@ -253,7 +253,7 @@ class UsersAppController extends AppBaseController
                 $validator = Validator::make($input, [
 
                     'email'    => 'required|unique:users,email,'.$id,
-                    'telefono' => 'required|unique:users,telefono,'.$id
+                    'phone' => 'required|unique:users,phone,'.$id
                 ]);
 
                 if ($validator->fails()) {
@@ -315,7 +315,7 @@ class UsersAppController extends AppBaseController
 
        }
        if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
-       if($formulario{'telefono'           }) { $data = $data->where('phone',               $formulario{'telefono'           });}
+       if($formulario{'phone'           }) { $data = $data->where('phone',               $formulario{'phone'           });}
        if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}
        if($formulario{'id_status_users_app'}) { $data = $data->where('id_status_users_app', $formulario{'id_status_users_app'});}
 
