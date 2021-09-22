@@ -4,7 +4,7 @@
   <div class="col-xs-12 col-sm-12">
   {!! Form::label('usuario', 'Usuario:') !!}<code>*</code>
   <div class="input-group mb-2">
-    {!! Form::text('usuario', null, ['id'=> 'usuario', 'class' => 'form-control']) !!}
+    {!! Form::text('username', null, ['id'=> 'username', 'class' => 'form-control']) !!}
   </div>
   <div><span class="help-block" id="error"></span></div>
 </div>

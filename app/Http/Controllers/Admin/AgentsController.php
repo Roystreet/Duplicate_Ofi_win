@@ -21,6 +21,7 @@ use App\Models\RolMenu;
 use Flash;
 use App\Models\UsersPasswords;
 use Illuminate\Support\Facades\Hash;
+use App\Models\UsersRed;
 
 class AgentsController extends Controller
 {
@@ -133,6 +134,7 @@ class AgentsController extends Controller
       $validator = Validator::make($input, [
         'email'     => 'required|unique:users',
         'phone'     => 'required|unique:users',
+        'username'     => 'required|unique:users_red',
         'password'         => 'required|min:6',
         'password_confirm' => 'required|same:password|min:6'
       ]);
@@ -149,10 +151,9 @@ class AgentsController extends Controller
           'id_departament' =>  $input{'id_departament'},
           'id_city' =>  $input{'id_city'},
           'id_distrito' =>  $input{'id_distrito'},
-          'nombres' => $input{'first_name'},
-          'apellidos' => $input{'last_name'},
-          'f_nacimiento' => $input{'birth'},
-          'usuario' => $input{'usuario'},
+          'first_name' => $input{'first_name'},
+          'last_name' => $input{'last_name'},
+          'birth' => $input{'birth'},
           'phone' => $input{'phone'},
           'isexterno'            => false,
           'id_status_users_app'  => 2,
@@ -168,6 +169,15 @@ class AgentsController extends Controller
           'status'           => true,
         ];
         UsersPasswords::create($dataPasswordUserApp)->id;
+
+        $dataUsersRed = [
+          'id_users'         => $id_user,
+          'id_users_sponsor' => 1,
+          'username'         => $input{'username'},
+          'id_status_red'    => 1,
+          'status'           => true,
+        ];
+        UsersRed::create($dataUsersRed)->id;
 
       Flash::success('Agente guardado con éxito');
 
