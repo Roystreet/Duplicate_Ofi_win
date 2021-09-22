@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\User;
+use App\User;
 
 class UpdateUsersAppRequest extends FormRequest
 {
@@ -32,12 +32,12 @@ class UpdateUsersAppRequest extends FormRequest
     public function attributes()
     {
       return [
-        'nombres'             => 'Nombres',
-        'apellidos'           => 'Apellidos',
+        'first_name'          => 'Nombres',
+        'last_name'           => 'Apellidos',
         'email'               => 'E-mail',
-        'f_nacimiento'        => 'Fecha de Nacimiento',
+        'birth'               => 'Fecha de Nacimiento',
         'id_tp_sexo'          => 'Sexo',
-        'telefono'            => 'Teléfono',
+        'phone'               => 'Teléfono',
         'id_country'          => 'Pais',
         'id_departament'      => 'Departamento',
         'id_city'             => 'Cíudad',

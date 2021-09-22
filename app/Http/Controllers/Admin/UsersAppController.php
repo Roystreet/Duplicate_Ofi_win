@@ -247,8 +247,8 @@ class UsersAppController extends AppBaseController
         }
                 $input = $request->all();
                 $input{'first_name'  } = mb_strtoupper($input{'first_name'  });
-                $input{'last_name'} = mb_strtoupper($input{'last_name'});
-                $input{'email'    } = mb_strtolower($input{'email'    });
+                $input{'last_name'}    = mb_strtoupper($input{'last_name'});
+                $input{'email'    }    = mb_strtolower($input{'email'    });
 
                 $validator = Validator::make($input, [
 
