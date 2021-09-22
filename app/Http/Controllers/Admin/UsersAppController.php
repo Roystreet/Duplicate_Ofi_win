@@ -92,21 +92,21 @@ class UsersAppController extends AppBaseController
         $main = $main->getMenu();
         $usersApp = null;
 
-        $valor = $this->validPermisoMenu(15);
-        if ($valor == false){
+        // $valor = $this->validPermisoMenu(15);
+        // if ($valor == false){
           return view('errors.403', compact('main'));
-        }
-
-        $pais           = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
-        $departamentos  = Departament   ::WHERE('status', '=', true)->orderBy('departament',      'ASC')->pluck('departament',      'id');
-        $ciudad         = City          ::WHERE('status', '=', true)->orderBy('city',             'ASC')->pluck('city',             'id');
-        $distrito       = Distrito      ::WHERE('status', '=', true)->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
-        $sexo           = TpSexo        ::WHERE('status', '=', true)->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
-        $estatus_users  = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
-
-        return view('admin.users_apps.create', compact('pais', 'departamentos', 'ciudad', 'distrito', 'sexo', 'estatus_users'))
-        ->with('main',     $main)
-        ->with('usersApp', $usersApp);
+        // }
+        //
+        // $pais           = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
+        // $departamentos  = Departament   ::WHERE('status', '=', true)->orderBy('departament',      'ASC')->pluck('departament',      'id');
+        // $ciudad         = City          ::WHERE('status', '=', true)->orderBy('city',             'ASC')->pluck('city',             'id');
+        // $distrito       = Distrito      ::WHERE('status', '=', true)->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
+        // $sexo           = TpSexo        ::WHERE('status', '=', true)->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
+        // $estatus_users  = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
+        //
+        // return view('admin.users_apps.create', compact('pais', 'departamentos', 'ciudad', 'distrito', 'sexo', 'estatus_users'))
+        // ->with('main',     $main)
+        // ->with('usersApp', $usersApp);
     }
 
     /**
@@ -264,7 +264,7 @@ class UsersAppController extends AppBaseController
 
                 $usersApp = $this->usersAppRepository->update($input, $id);
 
-        Flash::success('Usuario actualizado correctamente.');
+        // Flash::success('Usuario actualizado correctamente.');
 
         return redirect(route('usuarios-app.index'));
     }
@@ -315,7 +315,7 @@ class UsersAppController extends AppBaseController
 
        }
        if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
-       if($formulario{'phone'           }) { $data = $data->where('phone',               $formulario{'phone'           });}
+       if($formulario{'phone'              }) { $data = $data->where('phone',               $formulario{'phone'           });}
        if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}
        if($formulario{'id_status_users_app'}) { $data = $data->where('id_status_users_app', $formulario{'id_status_users_app'});}
 
