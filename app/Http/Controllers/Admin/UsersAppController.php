@@ -124,8 +124,8 @@ class UsersAppController extends AppBaseController
         $input{'email'    } = mb_strtolower($input{'email'    });
 
         $validator = Validator::make($input, [
-          'email'     => 'required|unique:users_apps',
-          'telefono'  => 'required|unique:users_apps'
+          'email'     => 'required|unique:users',
+          'telefono'  => 'required|unique:users'
         ]);
 
         if ($validator->fails()) {
