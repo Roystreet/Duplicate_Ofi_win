@@ -119,7 +119,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-6">
                           <label>Tel&eacute;fono:</label>
-                          <div class="bg-light border p-3 mb-3">{{ $usersApp->telefono }}</div>
+                          <div class="bg-light border p-3 mb-3">{{ $usersApp->phone }}</div>
                         </div>
                       </div>
                       <div class="form-row">

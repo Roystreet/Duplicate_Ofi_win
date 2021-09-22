@@ -158,7 +158,7 @@ public function simulandoRed($id)
       "nombres"        => ($usersApp->nombres)?        $usersApp->nombres     : null,
       "apellidos"      => ($usersApp->apellidos)?      $usersApp->apellidos   : null,
       "f_nacimiento"   => ($usersApp->f_nacimiento)?   $usersApp->f_nacimiento->format('Y-m-d') : '-',
-      "telefono"       => ($usersApp->telefono)?       $usersApp->telefono    : null,
+      "phone"       => ($usersApp->phone)?       $usersApp->phone    : null,
       "email"          => ($usersApp->email)?          $usersApp->email    : '-',
       "created_at"     => ($usersApp->created_at)?     $usersApp->created_at->format('d-m-Y') : '-',
 

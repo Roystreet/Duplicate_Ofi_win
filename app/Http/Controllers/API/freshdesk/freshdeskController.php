@@ -133,7 +133,7 @@ class freshdeskController extends Controller
               'apellido'=>'required',
               'motivo'=>'required',
               'email' => 'required|email',
-              'telefono' => 'required',
+              'phone' => 'required',
               'descripcion' => 'required|max:3000',
               'codigo' => 'required',
 
@@ -179,7 +179,7 @@ class freshdeskController extends Controller
       //   'type' => request()->tipo,
       //   'source' => 2,
       //   'group_id' => request()->group_id,
-      //   'phone' => request()->telefono,
+      //   'phone' => request()->phone,
       // ));
       //
       //   $url = "https://$yourdomain.freshdesk.com/api/v2/tickets";
@@ -276,7 +276,7 @@ class freshdeskController extends Controller
       	"id_country"           =>  request()->codigo,
         "name"                 =>  request()->name,
         "lastname"             =>  request()->lastname,
-        "telefono"             =>  request()->telefono,
+        "phone"             =>  request()->phone,
         "email"                =>  request()->email,
         "source"               =>  request()->source
       ];

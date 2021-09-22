@@ -159,7 +159,7 @@ p{
 			    				<h2 style="color: black; margin: 0 0 7px">Saludos de parte de la comunidad <br> <br><b> WIN TECNOLOGIES INC S.A. </b></h2>
 			    				<p style="margin: 2px; font-size: 15px;color: black;">
 			    					<br>
-			              		 <b>Se ha registrado en la Oficina Virtual como " <?php echo $a{'perfil'} ?> " exitosamente!</b> con el numero de teléfono <?php echo $a{'telefono'} ?>, se le adjunta una contraseña autogenerada en este correo, porfavor no la comparta con nadie.
+			              		 <b>Se ha registrado en la Oficina Virtual como " <?php echo $a{'perfil'} ?> " exitosamente!</b> con el numero de teléfono <?php echo $a{'phone'} ?>, se le adjunta una contraseña autogenerada en este correo, porfavor no la comparta con nadie.
                                   <div style="text-aling:center;">
                                   <table >
                                     <tr>

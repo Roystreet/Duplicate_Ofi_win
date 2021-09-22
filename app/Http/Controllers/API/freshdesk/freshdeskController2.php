@@ -131,7 +131,7 @@ class freshdeskController2 extends Controller
               'nombre' => 'required',
               'motivo'=>'required',
               'email' => 'required|email',
-              'telefono' => 'required|numeric',
+              'phone' => 'required|numeric',
               'descripcion' => 'required|max:3000',
               'codigo' => 'required',
 
@@ -166,7 +166,7 @@ class freshdeskController2 extends Controller
            'type' => request()->tipo,
            'source' => 2,
            'group_id' => request()->group_id,
-           'phone' => request()->telefono,
+           'phone' => request()->phone,
        ));
 
            $url = "https://$yourdomain.freshdesk.com/api/v2/tickets";

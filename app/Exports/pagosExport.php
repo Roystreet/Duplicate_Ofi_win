@@ -33,7 +33,7 @@ class pagosExport implements FromArray,WithHeadings
             'nombres',
             'apellidos',
             'email',
-            'telefono',
+            'phone',
             'id sponsor',
             'id_users',
             'username',

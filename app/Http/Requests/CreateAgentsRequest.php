@@ -35,7 +35,7 @@ class CreateAgentsRequest extends FormRequest
         'email'               => 'E-mail',
         'f_nacimiento'        => 'Fecha de Nacimiento',
         'id_tp_sexo'          => 'Sexo',
-        'telefono'            => 'Teléfono',
+        'phone'            => 'Teléfono',
         'id_country'          => 'Pais',
         'id_departament'      => 'Departamento',
         'id_city'             => 'Cíudad',

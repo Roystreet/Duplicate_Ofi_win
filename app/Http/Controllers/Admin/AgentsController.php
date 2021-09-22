@@ -92,7 +92,7 @@ class AgentsController extends Controller
 
      if($formulario{'id_users_app'       }) { $data = $data->where('id',                  $formulario{'id_users_app'       });}
      if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
-     if($formulario{'telefono'           }) { $data = $data->where('phone',               $formulario{'telefono'           });}
+     if($formulario{'phone'           }) { $data = $data->where('phone',               $formulario{'phone'           });}
      if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}
 
      $data = $data->where('isexterno',  false);
@@ -156,7 +156,7 @@ class AgentsController extends Controller
           'apellidos' => $input{'last_name'},
           'f_nacimiento' => $input{'birth'},
           'usuario' => $input{'usuario'},
-          'telefono' => $input{'phone'},
+          'phone' => $input{'phone'},
           'isexterno'            => false,
           'id_status_users_app'  => 2,
           'email'                => mb_strtolower($input{'email'}),

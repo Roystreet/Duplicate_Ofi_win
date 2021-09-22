@@ -253,7 +253,7 @@ class UsersAppController extends AppBaseController
                 $validator = Validator::make($input, [
 
                     'email'    => 'required|unique:users,email,'.$id,
-                    'phone' => 'required|unique:users,phone,'.$id
+                    'phone'    => 'required|unique:users,phone,'.$id
                 ]);
 
                 if ($validator->fails()) {

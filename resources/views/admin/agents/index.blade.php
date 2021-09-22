@@ -60,12 +60,12 @@
 
               <div class="form-row">
                 <div class="col-xs-12 col-sm-6">
-                  <label for="telefono">Tel&eacute;fono</label>
+                  <label for="phone">Tel&eacute;fono</label>
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
                       <div class="input-group-text"><i class="fas fa-phone"></i></div>
                     </div>
-                    {!! Form::text('telefono', null, ['id'=> 'telefono', 'class' => 'form-control']) !!}
+                    {!! Form::text('phone', null, ['id'=> 'phone', 'class' => 'form-control']) !!}
                   </div>
                   <div><span class="help-block" id="error"></span></div>
                 </div>

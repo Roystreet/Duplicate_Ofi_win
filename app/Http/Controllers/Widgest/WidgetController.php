@@ -72,7 +72,7 @@ class WidgetController extends AppBaseController
       "nombres"        => ($usersApp->nombres)?        $usersApp->nombres     : null,
       "apellidos"      => ($usersApp->apellidos)?      $usersApp->apellidos   : null,
       "f_nacimiento"   => ($usersApp->f_nacimiento)?   $usersApp->f_nacimiento->format('Y-m-d') : '-',
-      "telefono"       => ($usersApp->telefono)?       $usersApp->telefono    : null,
+      "phone"       => ($usersApp->phone)?       $usersApp->phone    : null,
       "email"          => ($usersApp->email)?          $usersApp->email    : '-',
       "created_at"     => ($usersApp->created_at)?     $usersApp->created_at->format('d-m-Y') : '-',
       "updated_at"     => ($usersApp->updated_at)?     $usersApp->updated_at->format('d-m-Y') : '-',
@@ -120,7 +120,7 @@ class WidgetController extends AppBaseController
       "id_users_sponsor"   => ($redUser->id_users_sponsor)?     $redUser->id_users_sponsor              : '-',
       "sponsor_nombres"    => ($redUser->id_users_sponsor)?     $redUser->getUsersSponsor->nombres      : '-',
       "sponsor_apellidos"  => ($redUser->id_users_sponsor)?     $redUser->getUsersSponsor->apellidos    : '-',
-      "sponsor_contacto"   => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsor->telefono)? $redUser->getUsersSponsor->telefono : 'N/R'    : '-',
+      "sponsor_contacto"   => ($redUser->id_users_sponsor)?     ($redUser->getUsersSponsor->phone)? $redUser->getUsersSponsor->phone : 'N/R'    : '-',
 
       "id_users"  => ($redUser->id_users)?    $redUser->id_users             : '-',
       "username"   => ($redUser->username)?     $redUser->username              : null,

@@ -24,8 +24,8 @@
 
 <!-- Telefono Field -->
 <div class="form-group col-sm-6">
-  {!! Form::label('telefono', 'Tel&eacute;fono:') !!}
-  <p>{!! $usersApp->telefono !!}</p>
+  {!! Form::label('phone', 'Tel&eacute;fono:') !!}
+  <p>{!! $usersApp->phone !!}</p>
 </div>
 
 <!-- Id Country Field -->
