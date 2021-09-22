@@ -22,11 +22,11 @@ class UsersAppRepository extends BaseRepository
         'id_departament',
         'id_city',
         'id_distrito',
-        'nombres',
-        'apellidos',
-        'f_nacimiento',
-        'usuario',
-        'telefono',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'birth',
+        'phone',
         'email',
         'id_status_users_app'
     ];
