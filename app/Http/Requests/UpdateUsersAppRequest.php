@@ -26,7 +26,6 @@ class UpdateUsersAppRequest extends FormRequest
     public function rules()
     {
         $rules = User::$rules;
-
         return $rules;
     }
     public function attributes()

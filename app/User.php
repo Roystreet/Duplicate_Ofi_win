@@ -63,6 +63,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static $rules = [];
+
+
     public function getSexo()
     {
         return $this->belongsTo(TpSexo::class, 'id_tp_sexo');
