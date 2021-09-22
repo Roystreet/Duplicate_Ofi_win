@@ -76,10 +76,7 @@ class RolUsersController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        $rolUsers = $this->rolUsersRepository->all();
-
         return view('admin.rol_users.index')
-            ->with('rolUsers', $rolUsers)
             ->with('main',     $main);
 
     }
