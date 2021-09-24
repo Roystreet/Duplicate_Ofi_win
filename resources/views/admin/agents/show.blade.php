@@ -13,7 +13,7 @@
 <div class="clearfix"></div>
 <div class="container-fluid mt-n10">
   <div class="card rounded mb-4">
-    <h6 class="small text-muted font-weight-500 card-header">Mi Perfil | Detalles</h6>
+    <h6 class="small text-muted font-weight-500 card-header">Agente Perfil | Detalles</h6>
 
     <div class="panel panel-default">
     <div class="content">
@@ -113,8 +113,8 @@
             <div class="col-xs-12 col-sm-9">
 
               <div class="form-group col-sm-12" align="right">
-                <a href="{!! route('usuarios-app.index') !!}" class="btn btn-primary btn-default">Listado</a>
-                <a href="{!!  route('usuarios-app.edit', [$usersApp->id]) !!}" class="btn btn-primary btn-default">Modificar</a>
+                <a href="{!! route('agentes.index') !!}" class="btn btn-primary btn-default">Listado</a>
+                <a href="{!!  route('agentes.edit', [$usersApp->id]) !!}" class="btn btn-primary btn-default">Modificar</a>
               </div>
 
             </div>

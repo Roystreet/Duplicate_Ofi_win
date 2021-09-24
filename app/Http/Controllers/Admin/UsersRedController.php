@@ -79,7 +79,9 @@ class UsersRedController extends AppBaseController
           return view('errors.403', compact('main'));
         }
 
-        return view('admin.red_usuarios.index')
+        $data = UsersRed::with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo')->paginate(5);
+
+        return view('admin.red_usuarios.index', compact('data'))
           ->with('main',        $main);
     }
 
@@ -277,7 +279,7 @@ class UsersRedController extends AppBaseController
        $formulario = request()->formulario;
 
        $data = (new UsersRed)->newQuery()->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo');
-       $data = $data->get();
+       $data = $data->paginate(5);
 
        return response()->json([
          'data' => $data,

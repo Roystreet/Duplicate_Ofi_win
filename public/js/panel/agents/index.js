@@ -71,8 +71,8 @@ $("#search"  ).click(function() {
               {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
-                '<a href="/agents/'+data+'"      class="btn btn-outline-blue  btn-sm"><i class="fas fa-eye"></i></a>'+
-                '<a href="/agents/'+data+'/edit" class="btn btn-outline-blue  btn-sm"><i class="fas fa-edit"></i></a>'+
+                '<a href="/agentes/'+data+'"      class="btn btn-outline-blue  btn-sm"><i class="fas fa-eye"></i></a>'+
+                '<a href="/agentes/'+data+'/edit" class="btn btn-outline-blue  btn-sm"><i class="fas fa-edit"></i></a>'+
                 '</div>';
               }},
               {data:"first_name",

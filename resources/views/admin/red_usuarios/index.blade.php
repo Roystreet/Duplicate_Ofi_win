@@ -32,5 +32,5 @@
 @section('scripts')
 <script src="{{ asset('plugins/DataTable/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/DataTable/Responsive-2.2.2/js/dataTables.responsive.js') }}"></script>
-<script src="{{ asset('js/panel/red_usuarios/index.js')}} "></script>
+<!-- <script src="{{ asset('js/panel/red_usuarios/index.js')}} "></script> -->
 @endsection

@@ -27,6 +27,8 @@ class UsersAppRepository extends BaseRepository
         'last_name',
         'birth',
         'phone',
+        'id_tp_document_identies',
+        'n_document',
         'email',
         'id_status_users_app'
     ];

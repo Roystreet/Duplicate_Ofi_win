@@ -3,33 +3,42 @@
         <thead>
             <tr>
                 <th>Acci&oacute;n</th>
-                <th>Código</th>
                 <th>Usuario</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Usuario Sponsor</th>
-                <th>Código Sponsor</th>
                 <th>Estatus Red</th>
                 <th>Estatus</th>
               </tr>
             </thead>
             <tbody>
-
+              @foreach($data as $row)
+                <tr>
+                 <td>{{ $row->id }}</td>
+                 <td>{{ $row->username }}</td>
+                 <td>{{ ($row->getUsersInvitado) ? $row->getUsersInvitado->first_name : '-' }}</td>
+                 <td>{{ ($row->getUsersInvitado) ? $row->getUsersInvitado->last_name : '-' }}</td>
+                 <td>{{ ($row->getUsersInvitado) ? $row->getUsersInvitado->email : '-' }}</td>
+                 <td>{{ ($row->getUsersSponsorCodigo) ? $row->getUsersSponsorCodigo->username : '-' }}</td>
+                 <td>{{ $row->getStatusRed->descripcion }}</td>
+                 <td>{{ $row->id }}</td>
+                </tr>
+              @endforeach
             </tbody>
             <tfoot>
               <tr>
                 <th>Acci&oacute;n</th>
-                <th>Código</th>
                 <th>Usuario</th>
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
                 <th>Usuario Sponsor</th>
-                <th>Código Sponsor</th>
                 <th>Estatus Red</th>
                 <th>Estatus</th>
               </tr>
             </tfoot>
           </table>
+
+          {!! $data->links() !!}
         </div>

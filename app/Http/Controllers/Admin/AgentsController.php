@@ -22,6 +22,7 @@ use Flash;
 use App\Models\UsersPasswords;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UsersRed;
+use App\Models\Session;
 
 class AgentsController extends Controller
 {
@@ -182,6 +183,141 @@ class AgentsController extends Controller
       Flash::success('Agente guardado con éxito');
 
       return redirect(route('agentes.index'));
+  }
+
+  public function show($id)
+  {
+      $main = new MenuClass();
+      $main = $main->getMenu();
+
+      $valor = $this->validPermisoMenu(15);
+      if ($valor == false){
+        return view('errors.403', compact('main'));
+      }
+
+      $usersApp = $this->usersAppRepository->find($id);
+
+      if (empty($usersApp)) {
+          // Flash::error('Usuario no encontrado');
+          return redirect(route('agentes.index'));
+      }
+
+      $datosSessionAnt = Session::where('token', auth()->user()->email)
+      ->where('id_status_session', 2)->orderby('updated_at','DESC')->first();
+
+      if($datosSessionAnt){
+        $date1 = new \DateTime($datosSessionAnt->updated_at);
+        $date2 = new \DateTime("now");
+        $diff = $date1->diff($date2);
+        $usersApp{'ult_session'} = $this->get_format ($diff);
+      }
+      else{
+        $usersApp{'ult_session'} = '-';
+      }
+
+      return view('admin.agents.show')
+      ->with('usersApp', $usersApp)
+      ->with('main',     $main);
+  }
+
+  public function edit($id)
+  {
+    $main = new MenuClass();
+    $main = $main->getMenu();
+
+    $valor = $this->validPermisoMenu(15);
+    if ($valor == false){
+      return view('errors.403', compact('main'));
+    }
+
+    $pais           = Country       ::WHERE('status', '=', true)->orderBy('country',          'ASC')->pluck('country',          'id');
+    $departamentos  = Departament   ::WHERE('status', '=', true)->orderBy('departament',      'ASC')->pluck('departament',      'id');
+    $ciudad         = City          ::WHERE('status', '=', true)->orderBy('city',             'ASC')->pluck('city',             'id');
+    $distrito       = Distrito      ::WHERE('status', '=', true)->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
+    $sexo           = TpSexo        ::WHERE('status', '=', true)->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
+    $estatus_users  = StatusUsersApp::WHERE('status', '=', true)->orderBy('status_users_app', 'ASC')->pluck('status_users_app', 'id');
+    $username       = UsersRed::WHERE('id_users', '=', $id)->first();
+    $usersApp = $this->usersAppRepository->find($id);
+
+      if (empty($usersApp)) {
+          Flash::error('Usuario no encontrado');
+          return redirect(route('agentes.index'));
+      }
+
+      return view('admin.agents.edit')
+      ->with ('usersApp',      $usersApp)
+      ->with ('username',      $username->username)
+      ->with ('pais',          $pais)
+      ->with ('departamentos', $departamentos)
+      ->with ('ciudad',        $ciudad)
+      ->with ('distrito',      $distrito)
+      ->with ('sexo',          $sexo)
+      ->with ('estatus_users', $estatus_users)
+      ->with ('main',          $main);
+
+  }
+
+  public function update($id, Request $request)
+  {
+      $usersApp = $this->usersAppRepository->find($id);
+
+      if (empty($usersApp)) {
+          // Flash::error('Usuario no encontrado');
+
+          return redirect(route('agents.index'));
+      }
+              $input = $request->all();
+              $input{'first_name'} = mb_strtoupper($input{'first_name'  });
+              $input{'last_name'}    = mb_strtoupper($input{'last_name'});
+              $input{'email'    }    = mb_strtolower($input{'email'    });
+
+              $validator = Validator::make($input, [
+
+                  'email'    => 'required|unique:users,email,'.$id,
+                  'phone'    => 'required|unique:users,phone,'.$id
+              ]);
+
+              if ($validator->fails()) {
+                  return redirect(route('agentes.create'))
+                              ->withErrors($validator)
+                              ->withInput();
+              }
+
+              $dataUser = [
+                  'id_tp_sexo' =>  $input{'id_tp_sexo'},
+                  'id_country' =>  $input{'id_country'},
+                  'id_departament' =>  $input{'id_departament'},
+                  'id_city' =>  $input{'id_city'},
+                  'id_distrito' =>  $input{'id_distrito'},
+                  'first_name' => $input{'first_name'},
+                  'last_name' => $input{'last_name'},
+                  'birth' => $input{'birth'},
+                  'phone' => $input{'phone'},
+                  'isexterno'            => false,
+                  'id_status_users_app'  => 2,
+                  'email'                => mb_strtolower($input{'email'}),
+                  'password'             => Hash::make($input{'password'}),
+                ];
+                User::where('id', $id)->update($dataUser);
+
+                $dataPasswordUserApp = [
+                  'password'         => Hash::make($input{'password'}),
+                  'password_repeat'  => Hash::make($input{'password'}),
+                  'status'           => true,
+                ];
+                UsersPasswords::where('id_users', $id)->update($dataPasswordUserApp);
+
+                $dataUsersRed = [
+                  'id_users_sponsor' => 1,
+                  'username'         => $input{'username'},
+                  'id_status_red'    => 1,
+                  'status'           => true,
+                ];
+                UsersRed::where('id_users', $id)->update($dataUsersRed);
+
+                Flash::success('Usuario actualizado correctamente.');
+
+                return redirect(route('agentes.index'));
   }
 
 }

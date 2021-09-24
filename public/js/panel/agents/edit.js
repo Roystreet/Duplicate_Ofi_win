@@ -2,7 +2,7 @@ $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('cont
 
 $(document).ready(function() {
   // alert (hola);
-  $("#formEditUsersApp").validate({
+  $("#formEditAgents").validate({
     ignore: [],
     rules: {
       telefono             :    { required: true, number  : true, minlength: 9  },
