@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth', 'checkip'], function(){
     Route::resource('distritos',            'Admin\DistritoController');
     Route::resource('foto-perfil',          'Admin\PhotoPerfilController');
     Route::resource('agentes',              'Admin\AgentsController');
+    Route::resource('usuarios-no-ov',       'Admin\UsersOvTempsController');
 
     //RUTAS PARA USUARIO INTERNO
     Route::match(['get', 'post'], '/updateStatusDistritos',        'Admin\DistritoController@updateStatus');
@@ -94,8 +95,10 @@ Route::group(['middleware' => 'auth', 'checkip'], function(){
     Route::MATCH(['get', 'post'], '/getDepartament',               'Admin\DepartamentController@getDepartament')->name('departamet.get');
     Route::MATCH(['get', 'post'], '/getAccesosIp',                 'Admin\AccesosIpController@getAccesosIp')    ->name('accesosips.get');
     Route::MATCH(['get', 'post'], '/getDistritos',                 'Admin\DistritoController@getDistritos')     ->name('distritos.get');
-
     Route::MATCH(['get', 'post'], '/getAgents',                    'Admin\AgentsController@getAgents')     ->name('agents.get');
+    Route::MATCH(['get', 'post'], '/getUsersTempOvs',              'Admin\UsersOvTempsController@getUsersTempOvs')->name('userstempovs.get');
+    Route::MATCH(['get', 'post'], '/getUsersTempOvsId/{id}',       'Admin\UsersOvTempsController@getUsersTempOvsId')->name('userstempovs.getId');
+    Route::MATCH(['get', 'post'], '/updateStatusTempOvs',          'Admin\UsersOvTempsController@updateStatusTempOvs')->name('userstempovs.updateStatusTempOvs');
 
     //RUTA PARA ESTATUS GENERALES
     Route::get  ('/estatus',        'Admin\StatusGeneralController@index')->name('estatus');

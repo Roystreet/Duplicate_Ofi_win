@@ -7,7 +7,7 @@ var table;
 
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
-    $('#usersApps-table').DataTable({
+    $('#usersTempOvs-table').DataTable({
         'responsive': false,
         'destroy': true,
         'language': {
@@ -44,22 +44,10 @@ $(document).ready(function() {
 
 $("#search").click(function() {
     var formulario = $("#formIndexUserApps").serializeObject();
-    console.log(formulario);
 
-    if (
-        $("#name").val() == '' &&
-        $("#email").val() == '' &&
-        $("#telefono").val() == '' &&
-        $("#id_country").val() == '' &&
-        $("#id_status_users_app").val() == ''
-    ) {
-        alert("Debes seleccionar al menos un filtro");
-        return false;
-    }
-
-    table = $('#usersApps-table').removeAttr('width').DataTable({
+    table = $('#usersTempOvs-table').removeAttr('width').DataTable({
         'ajax': {
-            'url': "/getUsersApps",
+            'url': "/getUsersTempOvs",
             'type': "POST",
             'data': {
                 formulario: formulario
@@ -88,11 +76,10 @@ $("#search").click(function() {
             }
         },
         'columns': [{
-                data: "id",
+                'data': "id",
                 "render": function(data, type, row) {
                     return '<div class="btn-group">' +
-                        '<a href="/usuarios-app/' + data + '"      class="btn btn-outline-blue  btn-sm"><i class="fas fa-eye"></i></a>' +
-                        '<a href="/usuarios-app/' + data + '/edit" class="btn btn-outline-blue  btn-sm"><i class="fas fa-edit"></i></a>' +
+                        '<a id="getData" data-id="' + row.id + '" class="btn btn-outline-blue  btn-sm"><i class="fas fa-eye"></i></a>' +
                         '</div>';
                 }
             },
@@ -115,15 +102,18 @@ $("#search").click(function() {
                 }
             },
             {
-                data: "id_tp_sexo",
-                "render": function(data, type, row) {
-                    return (data) ? row.get_sexo.descripcion : '-';
-                }
-            },
-            {
                 data: "phone",
                 "render": function(data, type, row) {
-                    return (data) ? data : '-';
+                    var number = (data) ? data : '-';
+                    if (number.length > 10 || number.length < 10 && row.get_country.id != 1) {
+                        number = number;
+                    } else if (row.get_country.id == 1) {
+                        var numtemp = (number.length == 9) ? number : number.substr(number.length - 9, number.length);
+                        number = '+' + row.get_country.code_phone + numtemp;
+                    } else {
+                        number = '+' + row.get_country.code_phone + number;
+                    }
+                    return '<a target="_blank" href=https://wa.me/' + number + '>Contactar</a>';
                 }
             },
             {
@@ -133,61 +123,101 @@ $("#search").click(function() {
                 }
             },
             {
-                data: "id_status_users_app",
+                data: "status_ov",
                 "render": function(data, type, row) {
-                    return (data) ? row.get_status_users_app.status_users_app : '-';
+
+                    return '<div class="btn-group">' +
+                        '<a id="changeStatus" data-id="' + row.id + '" class="btn btn-outline-blue  btn-sm"> ' + data + '</a>' +
+                        '</div>';
                 }
             },
             {
-                data: "id_status_users_app",
+                data: "id_user_modify",
                 "render": function(data, type, row) {
-                    return (data == 3) ? '<a onclick="bloqueoAcceso(' + row.id + ', \'desbloquear\')" class="btn btn-outline-red btn-sm"><i class="fa fa-lock"></i><a>' :
-                        '<a onclick="bloqueoAcceso(' + row.id + ',\'bloquear\')" class="btn btn-outline-green  btn-sm"><i class="fas fa-unlock"></i><a>';
+                  return (data) ? row.get_user_modify.last_name : '-';
                 }
             },
-
         ],
     });
 });
 
 
-function bloqueoAcceso(id, accion) {
-    alertify.confirm('<div align="center">¡Aviso!</div>', '<div align="center">\t\t ¿Confirmas que deseas ' + accion + ' este usuario?</div>',
-        function() {
-
-            $.ajax({
-                url: "/updateBloqueoAcceso", //ESTO VARIA
-                type: "post",
-                data: {
-                    id: id
-                },
-                beforeSend: function() {},
-            }).done(function(d) {
-                if (d.object == 'success') {
-                    table.ajax.reload();
-                }
-            }).fail(function() {
-                alert("No se logró actualizar el estado del usuario, por favor contacte con el administrador. (Error: UPJSAPPUser)");
-            }).always(function() {});
+$("#clean").click(function() {
+    $('#name').val('');
+    $('#email').val('');
+    $('#telefono').val('');
+    $('#id_country').val('').trigger('change');
+});
 
 
+$('#usersTempOvs-table tbody').on('click', '#getData', function() {
+    var id = $(this).attr('data-id');
+
+    var campodeBusqueda = 'id_users';
+    $.ajax({
+        url: "/getUsersTempOvsId/" + id,
+        type: "GET",
+        dataType: "json",
+        beforeSend: function() {},
+    }).done(function(d) {
+        if (d.flag == true) {
+            openInfo(d.data);
+        } else {
+            alertify.alert('<div align="center">¡Aviso!</div>', '<div align="center">\t\t ' + d.mensaje + ' </div>',
+                function() {
+                    //clean
+                });
+        }
+
+    }).fail(function() {
+        alert("¡Ha ocurrido un error en la operación!"); //alerta del ticket no resgistrado
+    }).always(function() {});
+
+});
+
+$('#usersTempOvs-table tbody').on('click', '#changeStatus', function() {
+    var id = $(this).attr('data-id');
+    $("#id_users_temp_ovs").val(id);
+    $('#modal-show-status').modal('show');
+});
+
+$("#saveStatus").click(function() {
+    var id_users_temp_ovs = $("#id_users_temp_ovs").val();
+    var status_ov = $("#status_ov").val();
+    console.log(id_users_temp_ovs);
+    console.log(status_ov);
+
+
+    $.ajax({
+        url: "/updateStatusTempOvs",
+        type: "POST",
+        data: {
+            id_users_temp_ovs: id_users_temp_ovs,
+            status_ov: status_ov
         },
-        function() {}).set('labels', {
-        ok: 'Continuar',
-        cancel: 'Cancelar'
-    });
+        dataType: "json",
+        beforeSend: function() {},
+    }).done(function(d) {
+      table.ajax.reload();
+    }).fail(function() {
+        alert("¡Ha ocurrido un error en la operación!"); //alerta del ticket no resgistrado
+    }).always(function() {});
+});
 
+
+//OBTENIENDO Data
+function openInfo(usuario) {
+    $(".nombres_html").html(usuario.first_name);
+    $(".apellidos_html").html(usuario.last_name);
+    $(".documento_html").html(usuario.get_tp_document_identies.abbreviation + ' - ' + usuario.n_document);
+    $(".email_html").html(usuario.email);
+    $(".telefono_html").html(usuario.phone);
+    $(".pais_html").html(usuario.get_country.country);
+    $(".creado_html").html(usuario.created_at);
+    $('#modal-show').modal('show');
 
 }
 
-$("#clean").click(function() {
-    //de acuerdo a los campos q quiero limpiar
-    $('#id_users_app').val('').trigger('change');
-    $('#id_country').val('').trigger('change');
-    $('#id_status_users_app').val('').trigger('change');
-    $('#email').val('');
-    $('#telefono').val('');
-});
 
 //GET ARRAY FORM
 $.fn.serializeObject = function() {
