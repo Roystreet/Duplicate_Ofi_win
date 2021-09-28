@@ -35,29 +35,29 @@ $(document).ready(function() {
             },
 
             'columns'       : [
-              {data:"data.id",
+              {data:"id",
               "render": function (data, type, row) {
                 return '<div class="btn-group">'+
                 '<a href="/red-usuarios/'+data+'"      class="btn btn-outline-blue btn-sm"><i class="fa fa-eye"></i></a>'+
                 '<a href="/red-usuarios/'+data+'/edit" class="btn btn-outline-blue btn-sm"><i class="fa fa-edit"></i></a>'+
                 '</div>';
               }},
-              {data:"data.codigo_invitado",
+              {data:"codigo_invitado",
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
-              {data:"data.usuario_invitado",
+              {data:"usuario_invitado",
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
-              {data:"data.id_users",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.first_name)?
                 row.get_users_invitado.first_name : '-'
                 : '-';
               }},
-              {data:"data.id_users",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.last_name)?
@@ -65,7 +65,7 @@ $(document).ready(function() {
                 : '-';
               }},
 
-              {data:"data.id_users",
+              {data:"id_users",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_invitado.email)?
@@ -73,7 +73,7 @@ $(document).ready(function() {
                 : '-';
               }},
 
-              {data:"data.id_users_sponsor",
+              {data:"id_users_sponsor",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_sponsor_codigo.usuario_invitado)?
@@ -81,7 +81,7 @@ $(document).ready(function() {
                 : '-';
               }},
 
-              {data:"data.id_users_sponsor",
+              {data:"id_users_sponsor",
               "render": function (data, type, row) {
                 return (data) ?
                 (row.get_users_sponsor_codigo.codigo_invitado)?
@@ -89,11 +89,11 @@ $(document).ready(function() {
                 : '-';
               }},
 
-              {data:"data.id_status_red",
+              {data:"id_status_red",
               "render": function (data, type, row) {
                return (data) ? row.get_status_red.descripcion : '-';
               }},
-              {data:"data.status",
+              {data:"status",
              "render": function (data, type, row) {
                 return (data == true)? '<a onclick="estatusUpload('+row.id+')" class="btn btn-outline-green btn-sm"><i class="fa fa-check-circle"></i><a>' :
                 '<a onclick="estatusUpload('+row.id+')" class="btn btn-outline-red  btn-sm"><i class="fa fa-close-circle"></i><a>';

@@ -119,8 +119,10 @@ class AgentsController extends Controller
       $ciudad         = City          ::WHERE('status', '=', 'TRUE')->orderBy('city',             'ASC')->pluck('city',             'id');
       $distrito       = Distrito      ::WHERE('status', '=', 'TRUE')->orderBy('distrito',         'ASC')->pluck('distrito',         'id');
       $sexo           = TpSexo        ::WHERE('status', '=', 'TRUE')->orderBy('descripcion',      'ASC')->pluck('descripcion',      'id');
+      $username = '';
 
-      return view('admin.agents.create', compact('pais', 'departamentos', 'ciudad', 'distrito', 'sexo'))
+
+      return view('admin.agents.create', compact('pais', 'departamentos', 'ciudad', 'distrito', 'sexo','username'))
       ->with('main',     $main)
       ->with('usersApp', $usersApp);
   }
