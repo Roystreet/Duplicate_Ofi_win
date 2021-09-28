@@ -248,7 +248,7 @@ class AgentsController extends Controller
 
       return view('admin.agents.edit')
       ->with ('usersApp',      $usersApp)
-      ->with ('username',      $username->username)
+      ->with ('username',      ($username) ? $username->username : '')
       ->with ('pais',          $pais)
       ->with ('departamentos', $departamentos)
       ->with ('ciudad',        $ciudad)
