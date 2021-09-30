@@ -15,6 +15,7 @@
 Route::get('/',                        'Auth\LoginController@index')->name('index')->middleware('checkip');
 Auth::routes();
 
+Route::get('acceso', function () {  return view('errors.restringido');  })->name('acceso');
 
 Route::group(['middleware' => 'auth', 'checkip'], function(){
 
