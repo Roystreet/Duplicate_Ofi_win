@@ -24,7 +24,43 @@
             <a class="btn float-right btn-primary" href="{!! route('token-usuarios-app.create') !!}">Agregar</a>
           </div>
         </div>
-
+        <div class="card rounded mb-4">
+      <!-- Filtros para busqueda -->
+      <h6 class="small text-muted font-weight-500 card-header">Formulario de búsqueda</h6>
+      <form id=formIndexUserApps>
+          <meta name="csrf-token" content="{{ csrf_token() }}">
+          <div class="p-4 border-bottom">
+              <!-- Campos del form de búsqueda -->
+              <div class="form-row">
+                <div class="col-xs-12 col-sm-6">
+                  <label for="id_users_app">Tipo de Token</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-user"></i></div>
+                    </div>
+                    {!! Form::select('id_tp_token', $tpTokens, null, ['id'=>'id_tp_token', 'placeholder' => 'Seleccione un estatus...',  'class'=>'form-control select2', 'style'=>'width: 100%',  ] ) !!}
+                  </div>
+                  <div><span class="help-block" id="error"></span></div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                  <label for="email">Token Llave</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-envelope"></i></div>
+                    </div>
+                    {!! Form::text('id_llave', null, ['id'=> 'id_llave', 'class' => 'form-control']) !!}
+                  </div>
+                  <div><span class="help-block" id="error"></span></div>
+                </div>
+              </div>
+  
+          </div>
+          <div class="bg-light p-4 small">
+            <button type="button" class="btn btn-clean btn-default-registro btn-warning" id="clean">Limpiar</button>
+            <button type="button" class="btn btn-search float-right btn-default btn-registro btn-primary" id="search">Buscar</button>
+          </div>
+      </form><!-- END Filtros para busqueda -->
+  </div> <!-- END Border Form -->
         @if (session('status')) <!-- Si el token se creó/actualizó correctamente, mostrará el mensaje del controlador -->
             <div class="alert alert-success alert-icon mt-2 ml-2 mr-2" role="alert">
                 <button class="close" type="button" data-dismiss="alert" aria-label="Close">

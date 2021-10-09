@@ -76,8 +76,9 @@ class TokenUsersAppController extends AppBaseController
         }
 
         $tokenUsersApps = $this->tokenUsersAppRepository->all();
+        $tpTokens = TpToken::where('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
-        return view('admin.token_users_apps.index')
+        return view('admin.token_users_apps.index', compact('tpTokens'))
             ->with('tokenUsersApps', $tokenUsersApps)
             ->with('main',           $main);
     }

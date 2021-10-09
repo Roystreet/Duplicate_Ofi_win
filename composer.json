@@ -14,16 +14,18 @@
         "doctrine/dbal": "^2.13",
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
-        "google/cloud-firestore": "^1.20",
+        "guzzlehttp/guzzle": "~6.0",
         "infyomlabs/adminlte-templates": "5.8.x-dev",
         "infyomlabs/laravel-generator": "5.8.x-dev",
         "infyomlabs/swagger-generator": "dev-master",
         "kreait/firebase-php": "^5.19",
         "laravel/framework": "5.8.*",
+        "laravel/passport": "7.5.1",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.8.0",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "^3.1",
+        "phpseclib/phpseclib": "2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

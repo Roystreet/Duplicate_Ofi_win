@@ -2,20 +2,21 @@
 
 namespace App;
 
+use App\Models\City;
+use App\Models\TpSexo;
+use App\Models\Country;
+use App\Models\Distrito;
+use App\Models\Departament;
+use App\Models\StatusUsersApp;
+use App\Models\TpDocumentIdenties;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\TpSexo;
-use App\Models\Country;
-use App\Models\Departament;
-use App\Models\City;
-use App\Models\Distrito;
-use App\Models\StatusUsersApp;
-use App\Models\TpDocumentIdenties;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
