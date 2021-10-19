@@ -6,7 +6,21 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+<div class="container-fluid p-3">
+  <div class="card">
+    <div class="card-header">
+      <h3>Men&uacute;</h3> 
+    </div>
+    <div class="card-body">
+ 
+       <div class="row w-100">
+        @include('admin.menus.show_fields')
+        <a href="{!! route('menus.index') !!}" class="btn btn-primary">Atrás</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <section class="content-header">
   <h1>
     Men&uacute;
   </h1>
@@ -20,5 +34,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

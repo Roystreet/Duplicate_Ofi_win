@@ -43,9 +43,9 @@ $(document).ready(function() {
               "render": function (data, type, row) {
                return (data) ? data : '-';
               }},
-              {data:"modified_by",
+              {data:"get_users",
               "render": function (data, type, row) {
-               return (data) ? data : '-';
+               return (data) ? row.get_users.email : '-';
               }},
               {data:"status_system",
              "render": function (data, type, row) {

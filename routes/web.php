@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth', 'checkip'], function(){
 
     Route::resource('usuarios-app',         'Admin\UsersAppController');
     Route::resource('rol-usuarios',         'Admin\RolUsersController');
+    Route::post('/getUser',                 'Admin\RolUsersController@get_usuario');
     Route::resource('token-usuarios-app',   'Admin\TokenUsersAppController');
 
     Route::resource('clave-usuarios-app',   'Admin\PasswordUsersAppController');

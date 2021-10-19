@@ -72,7 +72,7 @@ class UsersRedController extends AppBaseController
     {
         $main = new MenuClass();
         $main = $main->getMenu();
-
+ 
         $valor = $this->validPermisoMenu(25);
         /** Valida si tiene acceso al menu, de lo contrario envia una pantalla de error .**/
         if ($valor == false){
@@ -276,11 +276,58 @@ class UsersRedController extends AppBaseController
     {
        ini_set('memory_limit','-1');
 
+      //  return response()->json([
+      //   'data' => request()->all(),
+      // ]);
+
        $formulario = request()->formulario;
+       $limit = request()->length;
+       if(request()->start == 0){
+         $page = 1;
+       }else{
+         $page = (request()->start/10)+1;
+       }
 
-       $data = (new UsersRed)->newQuery()->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo');
-       $data = $data->paginate(5);
+       if(request()->email != null){
+        $email = request()->email;
+        $data = UsersRed::where('id',"!=",null)
+        ->whereHas('getUsersInvitado', function ($query) use ($email) {
+          $query->where('email','like', '%'.$email.'%');
+        })
+          ->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo')
+        ->orderBy('id', 'asc')
+        ->limit($limit)->offset(($page - 1) * $limit)
+        ->get();
 
+       }else if(request()->phone != null){
+        $phone = request()->phone;
+        $data = UsersRed::where('id',"!=",null)
+        ->whereHas('getUsersInvitado', function ($query) use ($phone) {
+          $query->where('phone','like', '%'.$phone.'%');
+        })
+          ->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo')
+        ->orderBy('id', 'asc')
+        ->limit($limit)->offset(($page - 1) * $limit)
+        ->get();
+      }
+      else if(request()->username != null){
+        $username = request()->username;
+        $data = UsersRed::where('username','like', '%'.$username.'%')
+        // ->whereHas('getUsersInvitado', function ($query) use ($username) {
+        //   $query->where('phone','like', '%'.$username.'%');
+        // })
+          ->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo')
+        ->orderBy('id', 'asc')
+        ->limit($limit)->offset(($page - 1) * $limit)
+        ->get();
+      }
+       else{
+
+        $data = UsersRed::where('id',"!=",null)->with('getStatusRed', 'getUsersSponsor', 'getUsersInvitado', 'getUsersSponsorCodigo')
+       ->orderBy('id', 'asc')
+       ->limit($limit)->offset(($page - 1) * $limit)
+       ->get();
+       }
        return response()->json([
          'data' => $data,
        ]);

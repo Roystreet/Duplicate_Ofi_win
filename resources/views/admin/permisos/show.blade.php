@@ -6,7 +6,21 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+<div class="container-fluid p-3">
+  <div class="card">
+    <div class="card-header">
+      <h3>Permisos</h3> 
+    </div>
+    <div class="card-body">
+ 
+       <div class="row w-100">
+        @include('admin.permisos.show_fields')
+        <a href="{!! route('permisos.index') !!}" class="btn btn-primary">Atrás</a>
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <section class="content-header">
   <h1>
     Permisos
   </h1>
@@ -20,5 +34,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

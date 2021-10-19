@@ -40,6 +40,15 @@
               <h4 class="blue"><span class="middle"> {!! $usersApp->first_name !!} {!! $usersApp->middle_name !!}, {!! $usersApp->last_name !!} </span></h4>
               <div class="profile-user-info">
 
+
+                 <!-- usuario  -->
+                 <div class="profile-info-row">
+                  <div class="profile-info-name"> ususario </div>
+                  <div class="profile-info-value">
+                    <span>{!! $user->username !!}</span>
+                  </div>
+                </div>
+
                 <!-- E-mail -->
                 <div class="profile-info-row">
                   <div class="profile-info-name"> Documento </div>
@@ -104,6 +113,15 @@
                     <span>{!! $usersApp->ult_session !!}</span>
                   </div>
                 </div>
+                <!-- sponsor  -->
+                <div class="profile-info-row">
+                  <div class="profile-info-name"> Sponsor </div>
+                  <div class="profile-info-value">
+                    <span><a href="/usuarios-app/{!! $sponsor->id_users !!}" target="_blank">{!! $sponsor->username !!}</a>.</span>
+                  </div>
+                </div>
+
+
 
               </div>
 

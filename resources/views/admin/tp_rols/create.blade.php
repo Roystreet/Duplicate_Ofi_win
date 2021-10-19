@@ -7,7 +7,20 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+<div class="container-fluid p-3">
+  <div class="card">
+    <div class="card-header">
+      rol
+    </div>
+    <div class="card-body">
+      {!! Form::open(['route' => 'roles.store']) !!}
+            @include('admin.tp_rols.fields')
+          {!! Form::close() !!}
+    </div>
+  </div>
+</div>
+
+{{-- <section class="content-header">
   <h1>
     Rol
   </h1>
@@ -23,5 +36,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

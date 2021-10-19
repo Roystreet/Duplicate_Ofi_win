@@ -250,8 +250,8 @@ class PermisoController extends AppBaseController
 
        $formulario = request()->formulario;
 
-       $data = (new Permiso)->newQuery()->with('getPermisos');
-       $data = $data->get();
+       $data = (new Permiso)->newQuery()->with('getPermisos')->with('getUsers');
+       $data = $data->get(); 
 
        return response()->json([
          'data' => $data,

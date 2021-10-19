@@ -39,11 +39,37 @@
         </div>
     @endif
     <div class="card-body">
+      <div class="content-fluid p-5">
+        <div class="row w-100">
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="correo" name="email" id="email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="celular" name="phone" id="phone">
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+            <div class="form-group">
+              {!! Form::select('id_tp_rol', $roles, null, ['id'=>'id_tp_rol', 'placeholder' => 'Seleccione...',  'class'=>'form-control select2', 'style'=>'width: 100%',  ] ) !!}
+            </div>
+            
+          </div>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-primary" onclick="get_user()">BUSCAR</button>
+      </div>
+      </div>
+      
+    <div class="row">
       @include('admin.rol_users.table')
+    </div>
+      
     </div>
   </div>
 </div>
-@endsection
+@endsection 
 
 @section('scripts')
 <script src="{{ asset('plugins/DataTable/DataTables-1.10.18/js/jquery.dataTables.min.js') }}"></script>

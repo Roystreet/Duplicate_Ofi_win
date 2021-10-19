@@ -51,10 +51,11 @@
 <!-- Submit Field -->
 <div class="form-group col-xs-12">
 <div class="input-group col-xs-6">
-  {!! Form::submit('Guardar', ['class' => 'btn btn-success btn-block rounded-pill']) !!}
+  {!! Form::submit('Guardar', ['class' => 'btn btn-primary btn-block ']) !!}
+  <a href="{!! route('menus.index') !!}" class="btn btn-primary btn-block ">Cancelar</a>
 </div>
 <div class="input-group col-xs-6">
-  <a href="{!! route('menus.index') !!}" class="btn btn-danger btn-block rounded-pill">Cancelar</a>
+  {{-- <a href="{!! route('menus.index') !!}" class="btn btn-primary btn-block ">Cancelar</a> --}}
 </div>
 
 <div>

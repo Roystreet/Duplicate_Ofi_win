@@ -7,13 +7,13 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
-                <th>Usuario Sponsor</th>
+                <th>Correo Sponsor</th>
                 <th>Estatus Red</th>
                 <th>Estatus</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($data as $row)
+              {{-- @foreach($data as $row)
                 <tr>
                  <td><div class="btn-group"><a href="/red-usuarios/{{ $row->id }}" class="btn btn-outline-blue btn-sm"><i class="fa fa-eye"></i></a><a href="/red-usuarios/{{ $row->id }}/edit" class="btn btn-outline-blue btn-sm"><i class="fa fa-edit"></i></a></div></td>
                  <td>{{ $row->username }}</td>
@@ -24,7 +24,7 @@
                  <td>{{ $row->getStatusRed->descripcion }}</td>
                  <td>({{ $row->status }} == true) ? <a onclick="estatusUpload('{{ $row->id }}')" class="btn btn-outline-green btn-sm"><i class="fa fa-check-circle"></i><a> : <a onclick="estatusUpload({{ $row->id }})" class="btn btn-outline-red  btn-sm"><i class="fa fa-close-circle"></i><a></td>
                 </tr>
-              @endforeach
+              @endforeach --}}
             </tbody>
             <tfoot>
               <tr>
@@ -33,12 +33,12 @@
                 <th>Nombres</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
-                <th>Usuario Sponsor</th>
+                <th>Correo Sponsor</th>
                 <th>Estatus Red</th>
                 <th>Estatus</th>
               </tr>
             </tfoot>
           </table>
 
-          {!! $data->links() !!}
+          {{-- {!! $data->links() !!} --}}
         </div>

@@ -19,5 +19,5 @@
         <th>Estatus</th>
       </tr>
     </tfoot>
-  </table>
+  </table> 
 </div>

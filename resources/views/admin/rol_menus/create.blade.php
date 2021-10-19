@@ -7,7 +7,25 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+
+<div class="container-fluid p-3">
+  <div class="card">
+    <div class="card-header">
+      <h3> Rol Men&uacute;</h3> 
+    </div>
+    <div class="card-body">
+        <div class="w-100">
+          @include('adminlte-templates::common.errors')
+        </div>
+       <div class="row w-100">
+        {!! Form::open(['route' => 'rol-menus.store' , 'id'=>'formCreateRolMenus','class'=>'w-100']) !!}
+            @include('admin.rol_menus.fields')
+          {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <section class="content-header">
   <h1>
     Rol Men&uacute;
   </h1>
@@ -23,7 +41,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection
 
 @section('scripts')

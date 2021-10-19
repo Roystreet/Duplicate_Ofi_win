@@ -75,8 +75,9 @@ class RolUsersController extends AppBaseController
         if ($valor == false){
           return view('errors.403', compact('main'));
         }
-
+        $r = TpRol::where('id','!=',null)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
         return view('admin.rol_users.index')
+        ->with('roles',     $r)
             ->with('main',     $main);
 
     }
@@ -114,9 +115,16 @@ class RolUsersController extends AppBaseController
     /** @desc: Esta funcion se encarga de guardar los datos **/
     public function store()
     {
-        $input = request()->all();
 
-        $rolUsers = RolUsers::create($input);
+        if(RolUsers::where('id_user',request()->id_user)->where('id_tp_rol',request()->id_tp_rol)->exists()){
+          Flash::success('El susuario ya existe con ese rol.');
+          return redirect(route('rol-usuarios.index'));
+        }
+
+        $r = new RolUsers();
+        $r->id_user = request()->id_user;
+        $r->id_tp_rol = request()->id_tp_rol;
+        $r->save();
 
         Flash::success('Rol Usuarios se ha guardado correctamente.');
 
@@ -180,7 +188,9 @@ class RolUsersController extends AppBaseController
         return view('errors.403', compact('main'));
       }
 
-      $tpUsersAps = User ::orderBy('email', 'ASC')     ->pluck('email', 'id');
+      $ru = RolUsers::where('id',$id)->first();
+
+      $tpUsersAps = User ::where('id',$ru->id_user)->first();
       $tpRols     = TpRol::WHERE('status', '=', true)->orderBy('descripcion', 'ASC')->pluck('descripcion', 'id');
 
       $rolUsers = $this->rolUsersRepository->find($id);
@@ -260,10 +270,42 @@ class RolUsersController extends AppBaseController
        ini_set('memory_limit','-1');
 
        $formulario    = request()->formulario;
+      $limit = request()->length;
+      if(request()->start == 0){
+        $page = 1;
+      }else{
+        $page = (request()->start/10)+1;
+      }
 
-       $data = (new RolUsers)->newQuery()->with('getUsers','getTpRol');
-       $data = $data->get();
-
+      if(request()->id_rol != null){
+        $data = RolUsers::where('id_tp_rol',request()->id_rol)->with('getUsers','getTpRol')
+        ->with('getUsers','getTpRol')
+       ->orderBy('id', 'asc')
+        ->limit($limit)->offset(($page - 1) * $limit)
+        ->get();
+      }else if(request()->email != null){
+        $email = request()->email;
+        $data = RolUsers::whereHas('getUsers', function ($query) use ($email) {
+          $query->where('email','like', '%'.$email.'%');
+      })->with('getUsers','getTpRol')
+      ->orderBy('id', 'asc')
+       ->limit($limit)->offset(($page - 1) * $limit)
+       ->get();
+      }else if(request()->phone != null){
+        $phone = request()->phone;
+        $data = RolUsers::whereHas('getUsers', function ($query) use ($phone) {
+          $query->where('phone','like', '%'.$phone.'%');
+      })->with('getUsers','getTpRol')
+      ->orderBy('id', 'asc')
+       ->limit($limit)->offset(($page - 1) * $limit)
+       ->get();
+      }else{
+        $data =   RolUsers::where('id',"!=",null)
+        ->with('getUsers','getTpRol')
+       ->orderBy('id', 'asc')
+        ->limit($limit)->offset(($page - 1) * $limit)
+        ->get();
+      }
        return response()->json([
          'data' => $data,
        ]);
@@ -280,5 +322,18 @@ class RolUsersController extends AppBaseController
             'object' => 'success',
           ]);
         }
+
+
+    public function get_usuario(){
+      $email = request()->info['term'];
+      // return response()->json([]);
+      $r = RolUsers::whereHas('getUsers', function ($query) use ($email) {
+        $query->where('email','like', '%'.$email.'%');
+    })->with('getUsers','getTpRol')->limit(40)->get();
+      return response()->json([
+        "object"=>"success",
+        "data"=>$r
+      ]);
+    }
 
 }

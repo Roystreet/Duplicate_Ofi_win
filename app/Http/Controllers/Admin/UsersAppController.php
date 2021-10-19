@@ -21,6 +21,7 @@ use App\Models\StatusUsersApp;
 use App\Classes\MenuClass;
 use App\Models\Session;
 use App\Models\Menu;
+use App\Models\UsersRed;
 use App\User;
 use Flash;
 use Response;
@@ -159,6 +160,8 @@ class UsersAppController extends AppBaseController
         }
 
         $usersApp = $this->usersAppRepository->find($id);
+        $u_r = UsersRed::where('id_users',$id)->first();
+        $u_s = UsersRed::where('id_users',$u_r->id_users_sponsor)->first();
 
         if (empty($usersApp)) {
             // Flash::error('Usuario no encontrado');
@@ -179,6 +182,8 @@ class UsersAppController extends AppBaseController
         }
 
         return view('admin.users_apps.show')
+        ->with('user', $u_r)
+        ->with('sponsor', $u_s)
         ->with('usersApp', $usersApp)
         ->with('main',     $main);
     }
@@ -307,9 +312,19 @@ class UsersAppController extends AppBaseController
                                       );
 
        if($formulario{'name'               }) {
-         $data = $data->orWhere('first_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
-         $data = $data->orWhere('last_name', 'like', '%' .mb_strtoupper($formulario{'name'} ). '%');
-         $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
+        
+            $u = UsersRed::where('username','like', '%' .$formulario['name'].'%')->get();
+        // return response()->json([$u]);
+        $ar_id = [];
+
+        foreach ($u as $key => $value) {
+          array_push($ar_id,$value->id_users);
+        }
+        
+        $data = $data->whereIn('id',$ar_id );
+        // $data = $data->orWhere('first_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%')->get();
+        //  $data = $data->orWhere('last_name', 'like', '%' .mb_strtoupper($formulario{'name'} ). '%');
+        //  $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
 
        }
        if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}

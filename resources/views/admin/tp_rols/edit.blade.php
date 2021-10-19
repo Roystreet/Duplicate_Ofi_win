@@ -7,7 +7,21 @@
 @endsection
 
 @section('content')
-<section class="content-header">
+<div class="container-fluid p-3">
+  <div class="card">
+    <div class="card-header">
+      <h3>Editar Rol</h3> 
+    </div>
+    <div class="card-body">
+       <div class="row w-100">
+        {!! Form::model($tpRol, ['route' => ['roles.update', $tpRol->id], 'method' => 'patch', 'class'=>'w-100']) !!}
+          @include('admin.tp_rols.fields')
+        {!! Form::close() !!}
+      </div>
+    </div>
+  </div>
+</div>
+{{-- <section class="content-header">
   <h1>
     Rol
   </h1>
@@ -23,5 +37,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 @endsection

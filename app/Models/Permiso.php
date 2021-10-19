@@ -5,6 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Permiso;
+use App\User;
 
 class Permiso extends Model
 {
@@ -46,6 +47,12 @@ class Permiso extends Model
     'modified_by' => 'required'
 
   ];
+
+  public function getUsers()
+  {
+    return $this->belongsTo(User::class, 'modified_by');
+  }
+
   public function getPermisos()
   {
     return $this->belongsTo(Permiso::class, 'id_permisos');
