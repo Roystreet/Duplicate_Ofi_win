@@ -84,6 +84,17 @@
                   </div>
                   <div><span class="help-block" id="error"></span></div>
                 </div>
+
+                <div class="col-xs-12 col-sm-6">
+                  <label for="id_country">Nombres</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fa fa-user"></i></div>
+                    </div>
+                    {!! Form::text('full_name', null, ['id'=> 'full_name', 'class' => 'form-control']) !!}
+                  </div>
+                  <div><span class="help-block" id="error"></span></div>
+                </div>
               </div>
           </div>
           <div class="bg-light p-4 small">

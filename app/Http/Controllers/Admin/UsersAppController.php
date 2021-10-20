@@ -311,7 +311,7 @@ class UsersAppController extends AppBaseController
                            'getStatusUsersApp'
                                       );
 
-       if($formulario{'name'               }) {
+       if($formulario{'name'}) {
         
             $u = UsersRed::where('username','like', '%' .$formulario['name'].'%')->get();
         // return response()->json([$u]);
@@ -327,6 +327,11 @@ class UsersAppController extends AppBaseController
         //  $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'name'}) . '%');
 
        }
+       if($formulario{'full_name'              }) { 
+         $data = $data->orWhere('first_name', 'like', '%' .mb_strtoupper($formulario{'full_name'}) . '%');
+         $data = $data->orWhere('last_name', 'like', '%' .mb_strtoupper($formulario{'full_name'} ). '%');
+         $data = $data->orWhere('middle_name', 'like', '%' .mb_strtoupper($formulario{'full_name'}) . '%');
+        }
        if($formulario{'email'              }) { $data = $data->where('email', mb_strtolower($formulario{'email'              }));}
        if($formulario{'phone'              }) { $data = $data->where('phone',               $formulario{'phone'           });}
        if($formulario{'id_country'         }) { $data = $data->where('id_country',          $formulario{'id_country'         });}
