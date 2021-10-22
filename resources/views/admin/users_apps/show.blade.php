@@ -45,7 +45,9 @@
                  <div class="profile-info-row">
                   <div class="profile-info-name"> ususario </div>
                   <div class="profile-info-value">
+                    @if ($user)
                     <span>{!! $user->username !!}</span>
+                    @endif
                   </div>
                 </div>
 
