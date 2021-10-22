@@ -117,7 +117,9 @@
                 <div class="profile-info-row">
                   <div class="profile-info-name"> Sponsor </div>
                   <div class="profile-info-value">
+                    @if ($sponsor != null)
                     <span><a href="/usuarios-app/{!! $sponsor->id_users !!}" target="_blank">{!! $sponsor->username !!}</a>.</span>
+                    @endif
                   </div>
                 </div>
 

@@ -161,7 +161,11 @@ class UsersAppController extends AppBaseController
 
         $usersApp = $this->usersAppRepository->find($id);
         $u_r = UsersRed::where('id_users',$id)->first();
+        if($u_r)
         $u_s = UsersRed::where('id_users',$u_r->id_users_sponsor)->first();
+        else{
+          $u_s = null;
+        }
 
         if (empty($usersApp)) {
             // Flash::error('Usuario no encontrado');
